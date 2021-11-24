@@ -20,7 +20,7 @@ public class SplashScreen extends AppCompatActivity {
 
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_splash_screen);
 
         // The Runnable will be executed after the given delay time
         h.postDelayed(r, 3000);
