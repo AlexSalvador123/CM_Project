@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">TrackMySport</string>
     <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="phonenumber">Phone number</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="coach">Coach</string>
+    <string name="athlete">Athlete</string>
 </resources>
