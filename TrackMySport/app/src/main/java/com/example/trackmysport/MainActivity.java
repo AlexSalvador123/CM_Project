@@ -19,4 +19,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     };
+
+    public void GoToRegisterPage (View view){
+        Intent i = new Intent(this, Register.class);
+        startActivity(i);
+        finish();
+    };
 }

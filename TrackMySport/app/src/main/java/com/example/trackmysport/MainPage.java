@@ -14,4 +14,10 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
     }
 
+    public void Profile(View view){
+        Intent i = new Intent(this, Profile.class);
+        startActivity(i);
+        finish();
+    }
+
 }
