@@ -101,4 +101,6 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="createTeam">Create Team</string>
+    <string name="seasonTeam">Season of the team</string>
 </resources>

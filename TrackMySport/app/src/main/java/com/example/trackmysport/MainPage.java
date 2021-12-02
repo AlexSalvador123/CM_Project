@@ -20,4 +20,10 @@ public class MainPage extends AppCompatActivity {
         finish();
     }
 
+    public void Team(View view){
+        Intent i = new Intent(this, Team.class);
+        startActivity(i);
+        finish();
+    }
+
 }
