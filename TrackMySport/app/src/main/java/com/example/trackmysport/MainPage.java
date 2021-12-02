@@ -32,4 +32,10 @@ public class MainPage extends AppCompatActivity {
         finish();
     }
 
+    public void TrainingSession(View view){
+        Intent i = new Intent(this, TrainingSession.class);
+        startActivity(i);
+        finish();
+    }
+
 }
