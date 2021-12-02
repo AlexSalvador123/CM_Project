@@ -26,4 +26,10 @@ public class MainPage extends AppCompatActivity {
         finish();
     }
 
+    public void Videos(View view){
+        Intent i = new Intent(this, Videos.class);
+        startActivity(i);
+        finish();
+    }
+
 }
