@@ -6,31 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".TrainingSession">
 
-    <Button
-        android:id="@+id/new_session"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton_sessions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="100dp"
-        android:text="New Training Session"
-        app:layout_constraintBottom_toTopOf="@+id/current_sessions"
+        android:backgroundTint="@color/black"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="600dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="411dp"
+        android:layout_height="140dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img"
+        app:layout_constraintBaseline_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/current_sessions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="300dp"
-        android:text="Current Sessions"
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container_sessions"
+        android:layout_width="388dp"
+        android:layout_height="566dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_session" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="MissingConstraints" >
+
+
+    </FrameLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
