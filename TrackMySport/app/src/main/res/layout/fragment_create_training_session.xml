@@ -60,7 +60,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="60dp"
             android:gravity="center"
-            android:text="Nome" />
+            android:text="Exercise" />
 
         <TextView
             android:id="@+id/tempo_title"
@@ -71,7 +71,7 @@
             android:layout_toStartOf="@+id/reps_title"
             android:layout_toLeftOf="@+id/reps_title"
             android:gravity="center"
-            android:text="Tempo(min)" />
+            android:text="Time(min)" />
 
         <TextView
             android:id="@+id/reps_title"
@@ -82,7 +82,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:gravity="center"
-            android:text="Repetições" />
+            android:text="Repetitions" />
 
         <EditText
             android:id="@+id/line1_1"
