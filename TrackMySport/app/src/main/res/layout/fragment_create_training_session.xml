@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,33 +11,144 @@
         android:id="@+id/name_session"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="22dp"
         android:ems="10"
         android:hint="Name"
-        android:layout_gravity="center"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/session_difficulty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/session_difficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Difficulty"
-        android:layout_gravity="center"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_session" />
 
-    <Button
-        android:id="@+id/create_session_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_marginBottom="100dp"
-        android:backgroundTint="#000000"
-        android:onClick="create_training_session"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="368dp"
+        android:layout_height="442dp"
+        android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:text="Create Training Session" />
-</FrameLayout>
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="22dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/create_session_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/session_difficulty">
+
+
+        <TextView
+            android:id="@+id/nome_title"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:text="Exercise" />
+
+        <TextView
+            android:id="@+id/tempo_title"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/nome_title"
+            android:layout_alignBottom="@+id/nome_title"
+            android:layout_toStartOf="@+id/reps_title"
+            android:layout_toLeftOf="@+id/reps_title"
+            android:gravity="center"
+            android:text="Time(min)" />
+
+        <TextView
+            android:id="@+id/reps_title"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tempo_title"
+            android:layout_alignBottom="@+id/tempo_title"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="Repetitions" />
+
+        <EditText
+            android:id="@+id/line1_1"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nome_title"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="26dp" />
+
+        <EditText
+            android:id="@+id/line1_2"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/line1_1"
+            android:layout_alignBottom="@+id/line1_1"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:id="@+id/line1_3"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/reps_title"
+            android:layout_alignRight="@+id/reps_title"
+            android:layout_alignBottom="@+id/line1_2" />
+
+        <EditText
+            android:id="@+id/line2_1"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line1_1"
+            android:layout_alignEnd="@+id/line1_1"
+            android:layout_alignRight="@+id/line1_2"
+            android:layout_marginTop="22dp" />
+
+        <EditText
+            android:id="@+id/line2_2"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/line2_1"
+            android:layout_alignStart="@+id/line1_2"
+            android:layout_alignLeft="@+id/line1_2"
+            android:layout_alignBottom="@+id/line2_1" />
+
+        <EditText
+            android:id="@+id/line2_3"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/line2_2"
+            android:layout_alignBottom="@+id/line2_2"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true" />
+
+        <Button
+            android:id="@+id/create_session_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="67dp"
+            android:layout_marginBottom="98dp"
+            android:backgroundTint="#000000"
+            android:onClick="create_training_session"
+            android:text="Create Training Session" />
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
