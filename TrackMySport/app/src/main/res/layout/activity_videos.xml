@@ -7,20 +7,6 @@
     android:background="#FFFFFF"
     tools:context=".Videos">
 
-    <GridView
-        android:id="@+id/galleryGridView"
-        android:layout_width="410dp"
-        android:layout_height="733dp"
-        android:columnWidth="280dp"
-        android:gravity="center"
-        android:horizontalSpacing="2dp"
-        android:numColumns="2"
-        android:padding="2dp"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></GridView>
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/camera"
         android:layout_width="wrap_content"
@@ -31,5 +17,17 @@
         android:onClick="takePicture"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <Button
+        android:id="@+id/openGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
