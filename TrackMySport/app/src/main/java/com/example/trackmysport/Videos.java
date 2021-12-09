@@ -25,8 +25,8 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.VideoView;
+
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -34,16 +34,19 @@ import java.util.ArrayList;
 
 public class Videos extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
-    public static final int PICK_IMAGE = 1;
+    public static final int PICK_IMAGE = 17;
 
-    RecyclerView folderRecycler;
-    TextView empty;
+    ImageView selectedImage;
+    VideoView selectedVideo;
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_videos);
+
+        selectedImage = (ImageView)findViewById(R.id.selectedImage);
+        selectedVideo = (VideoView)findViewById(R.id.selectedVideo);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.camera);
         fab.bringToFront();
@@ -72,9 +75,27 @@ public class Videos extends AppCompatActivity {
 
     private void openGallery(View view){
         Intent intent = new Intent();
-        intent.setType("image/*");
+        intent.setType("image/* video/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("SIMMMM");
+        if (requestCode == PICK_IMAGE) {
+            String d = data.getData().toString();
+            Uri uri = data.getData();
+            if(d.contains("video")){
+                selectedVideo.bringToFront();
+                selectedVideo.setVideoURI(data.getData());
+            }
+            else{
+                selectedImage.bringToFront();
+                selectedImage.setImageURI(data.getData());
+            }
+        }
     }
 }
 
