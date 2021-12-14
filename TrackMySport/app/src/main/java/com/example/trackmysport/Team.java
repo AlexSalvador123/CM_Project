@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
@@ -53,12 +54,13 @@ public class Team extends AppCompatActivity {
     }
 
     public void createTeam(View view){
+
         frag=true;
         fd = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
         dr = fd.getReference();
         EditText editText = (EditText) findViewById(R.id.nameTeam);
         String name = editText.getText().toString();
-        dr.child("Teams").child(name).setValue("");
+        dr.child("Teams").child(name).child("teamname").setValue(name);
         replaceFragment(new manageTeamsFragment());
     }
 
