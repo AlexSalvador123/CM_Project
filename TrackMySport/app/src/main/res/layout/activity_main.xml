@@ -55,7 +55,7 @@
         android:layout_height="49dp"
         android:layout_marginTop="100dp"
         android:backgroundTint="@color/black"
-        android:onClick="GoToMainPage"
+        android:onClick="login"
         android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
