@@ -8,18 +8,25 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Team extends AppCompatActivity {
 
     FloatingActionButton fragmentCreate;
     Button teamCreated;
     boolean frag= true;
+    private static FirebaseDatabase fd;
+    private static DatabaseReference dr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_team);
         fragmentCreate = findViewById(R.id.floatingActionButton);
 
@@ -47,7 +54,13 @@ public class Team extends AppCompatActivity {
     }
 
     public void createTeam(View view){
+
         frag=true;
+        fd = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
+        dr = fd.getReference();
+        EditText editText = (EditText) findViewById(R.id.nameTeam);
+        String name = editText.getText().toString();
+        dr.child("Teams").child(name).child("teamname").setValue(name);
         replaceFragment(new manageTeamsFragment());
     }
 
