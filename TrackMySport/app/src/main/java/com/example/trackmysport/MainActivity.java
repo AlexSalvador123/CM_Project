@@ -75,13 +75,13 @@ public class MainActivity extends AppCompatActivity {
     }
     public void updateUI(FirebaseUser account){
         if(account != null){
-            toast = Toast.makeText(this,"You signed up successfully",Toast.LENGTH_LONG);
             startActivity(new Intent(this,MainPage.class));
 
         }else {
             toast = Toast.makeText(this,"Username or Password are incorrect",Toast.LENGTH_LONG);
+            toast.show();
         }
 
-        toast.show();
+
     }
 }
