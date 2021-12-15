@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -59,25 +60,28 @@ public class Register extends AppCompatActivity {
 
         String email = emailAddress.getText().toString();
         String password = password1.getText().toString();
-        mAuth.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                            firebasedb = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
-                            dbref = firebasedb.getReference();
-                            DatabaseReference userDB = dbref.child("Users").child(user.getUid());
-                            userDB.child("name").setValue(name.getText().toString());
-                            userDB.child("phoneNumber").setValue(phoneNumber.getText().toString());
-                            userDB.child("accountType").setValue(accountType);
+        String cPassword = password2.getText().toString();
+        if(validate(email, password,cPassword)) {
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                updateUI(user);
+                                firebasedb = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
+                                dbref = firebasedb.getReference();
+                                DatabaseReference userDB = dbref.child("Users").child(user.getUid());
+                                userDB.child("name").setValue(name.getText().toString());
+                                userDB.child("phoneNumber").setValue(phoneNumber.getText().toString());
+                                userDB.child("accountType").setValue(accountType);
 
-                        } else {
-                            updateUI(null);
+                            } else {
+                                updateUI(null);
+                            }
                         }
-                    }
-                });
+                    });
+        }
     }
 
     public void updateUI(FirebaseUser account){
@@ -90,4 +94,18 @@ public class Register extends AppCompatActivity {
         }
 
         toast.show();
-    }}
+    }
+
+    private boolean validate(String email, String password1, String password2) {
+        boolean temp=true;
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            Toast.makeText(this,"Invalid Email Address",Toast.LENGTH_SHORT).show();
+            temp=false;
+        }
+        if(!password1.equals(password2)){
+            Toast.makeText(this,"Password Not matching",Toast.LENGTH_SHORT).show();
+            temp=false;
+        }
+        return temp;
+    }
+}
