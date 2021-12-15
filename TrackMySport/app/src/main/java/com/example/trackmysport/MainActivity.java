@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     Toast toast;
-    SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +66,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-                            System.out.println(task.getResult());
                             updateUI(user);
-                            @SuppressLint("RestrictedApi") SharedPreferences sharedPref =
-                                    getActivity(getApplicationContext()).getPreferences(Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPref.edit();
-                            editor.putString(getString(R.string.user_id), user.getUid());
-                            editor.commit();
                         } else {
                             updateUI(null);
                         }

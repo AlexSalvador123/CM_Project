@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,17 +22,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
     private FirebaseAuth mAuth;
     Toast toast;
-    SharedPreferences sharedPref;
+    private static FirebaseDatabase firebasedb;
+    private static DatabaseReference dbref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        sharedPref = getApplicationContext().getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -49,6 +52,10 @@ public class Register extends AppCompatActivity {
         EditText password1 = (EditText)findViewById(R.id.editTextTextPassword2);
         EditText password2 = (EditText)findViewById(R.id.editTextTextPassword3);
         EditText phoneNumber = (EditText)findViewById(R.id.editTextPhone);
+        RadioGroup radioGroup = (RadioGroup)findViewById(R.id.accountType);
+        final String accountType = ((RadioButton)findViewById(radioGroup.getCheckedRadioButtonId())).
+                                    getText().toString();
+
 
         String email = emailAddress.getText().toString();
         String password = password1.getText().toString();
@@ -59,6 +66,12 @@ public class Register extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
+                            firebasedb = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
+                            dbref = firebasedb.getReference();
+                            DatabaseReference userDB = dbref.child("Users").child(user.getUid());
+                            userDB.child("name").setValue(name.getText().toString());
+                            userDB.child("phoneNumber").setValue(phoneNumber.getText().toString());
+                            userDB.child("accountType").setValue(accountType);
 
                         } else {
                             updateUI(null);
