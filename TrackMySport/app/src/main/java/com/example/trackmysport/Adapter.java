@@ -16,12 +16,13 @@ import java.util.ArrayList;
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     Context context;
-
+    ItemClickListener clickListener;
     ArrayList<TeamData> list;
 
-    public Adapter(Context context, ArrayList<TeamData> list) {
+    public Adapter(Context context, ArrayList<TeamData> list, ItemClickListener clickListener) {
         this.context = context;
         this.list = list;
+        this.clickListener  = clickListener;
     }
 
     @NonNull
@@ -32,15 +33,23 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Adapter.MyViewHolder holder, int position) {
 
         TeamData tdata = list.get(position);
         holder.teamname.setText(tdata.getTeamname());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.onItemClick(tdata);
+            }
+        });
+
 
     }
 
     @Override
     public int getItemCount() {
+
         return list.size();
     }
 
@@ -54,5 +63,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
             teamname = itemView.findViewById(R.id.teamname);
         }
+    }
+    public interface ItemClickListener {
+
+        public void onItemClick(TeamData dataTeam);
     }
 }
