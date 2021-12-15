@@ -50,6 +50,9 @@ public class Team extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
+        //transaction.hide(getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container));
+        //transaction.add(R.id.fragment_container, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 

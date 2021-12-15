@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
-public class manageTeamsFragment extends Fragment {
+public class manageTeamsFragment extends Fragment implements Adapter.ItemClickListener{
 
     View view;
     RecyclerView recyclerView;
@@ -40,7 +41,7 @@ public class manageTeamsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         list = new ArrayList<>();
-        adapter = new Adapter(getContext(), list);
+        adapter = new Adapter(getContext(), list,this);
         recyclerView.setAdapter(adapter);
 
         database.addValueEventListener(new ValueEventListener() {
@@ -64,5 +65,18 @@ public class manageTeamsFragment extends Fragment {
 
 
         return view;
+    }
+
+    @Override
+    public void onItemClick(TeamData dataTeam) {
+        Fragment fragment = DetailTeamFragment.newInstance(dataTeam.getTeamname());
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+        transaction.hide(getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container));
+        transaction.add(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
+        //transaction.replace(R.id.fragment_container, fragment);
+        transaction.commit();
     }
 }
