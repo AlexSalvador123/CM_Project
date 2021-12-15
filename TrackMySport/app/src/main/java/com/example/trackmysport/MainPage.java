@@ -17,25 +17,21 @@ public class MainPage extends AppCompatActivity {
     public void Profile(View view){
         Intent i = new Intent(this, Profile.class);
         startActivity(i);
-        finish();
     }
 
     public void Team(View view){
         Intent i = new Intent(this, Team.class);
         startActivity(i);
-        finish();
     }
 
     public void Videos(View view){
         Intent i = new Intent(this, Videos.class);
         startActivity(i);
-        finish();
     }
 
     public void TrainingSession(View view){
         Intent i = new Intent(this, TrainingSession.class);
         startActivity(i);
-        finish();
     }
 
 }
