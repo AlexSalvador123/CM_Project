@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class TrainingSession extends AppCompatActivity {
 
     FloatingActionButton fragmentCreate;
-    boolean frag= true;
+    public static int frag= 1;
     private static FirebaseDatabase firebasedb;
     private static DatabaseReference dbref;
 
@@ -32,17 +32,23 @@ public class TrainingSession extends AppCompatActivity {
         fragmentCreate.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {
-                  if (frag==true) {
+                  if (frag==1) {
                       replace_sessions_fragment(new CreateTrainingSessionFragment());
-                      frag=false;
+                      frag=0;
+                  }else if (frag==0){
+                      replace_sessions_fragment(new ManageTrainingSessionsFragment());
+                      frag=1;
                   }else{
                       replace_sessions_fragment(new ManageTrainingSessionsFragment());
-                      frag=true;
+                      frag=1;
                   }
               }
             }
         );
+
     }
+
+
 
     public void replace_sessions_fragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -52,7 +58,7 @@ public class TrainingSession extends AppCompatActivity {
     }
 
     public void create_training_session(View view){
-        frag=true;
+        frag=1;
         firebasedb = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
         dbref = firebasedb.getReference();
 
@@ -93,7 +99,7 @@ public class TrainingSession extends AppCompatActivity {
 
         //exercise2 repetitions
         EditText reps2_session = (EditText) findViewById(R.id.line2_3);
-        String reps2_session_string = exercise2_session.getText().toString();
+        String reps2_session_string = reps2_session.getText().toString();
         dbref.child("Training Plans").child(name_session_string).child("plan_reps2").setValue(reps2_session_string);
 
 

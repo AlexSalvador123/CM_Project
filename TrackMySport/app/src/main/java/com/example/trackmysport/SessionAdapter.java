@@ -17,9 +17,12 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.MyViewHo
 
     ArrayList<SessionData> list;
 
-    public SessionAdapter(Context context, ArrayList<SessionData> list) {
+    SessionAdapter.ItemClickListener clickListener;
+
+    public SessionAdapter(Context context, ArrayList<SessionData> list, SessionAdapter.ItemClickListener clickListener) {
         this.context = context;
         this.list = list;
+        this.clickListener  = clickListener;
     }
 
     @NonNull
@@ -30,10 +33,16 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SessionAdapter.MyViewHolder holder, int position) {
 
         SessionData session_data = list.get(position);
         holder.plan_name.setText(session_data.getPlan_name());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.onItemClick(session_data);
+            }
+        });
 
     }
 
@@ -52,6 +61,11 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.MyViewHo
 
             plan_name = itemView.findViewById(R.id.plan_name);
         }
+    }
+
+    public interface ItemClickListener {
+
+        public void onItemClick(SessionData data_session);
     }
 
 }
