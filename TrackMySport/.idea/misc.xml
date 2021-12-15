@@ -9,23 +9,13 @@
         <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/activity_splash_screen.xml" value="0.17831813576494426" />
         <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/activity_team.xml" value="0.18" />
         <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/fragment_create_team.xml" value="0.17676767676767677" />
-        <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/fragment_detail_team.xml" value="0.36666666666666664" />
         <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/fragment_manage_teams.xml" value="0.25" />
         <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/fragment_navbar.xml" value="0.36666666666666664" />
         <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/item_team.xml" value="0.36666666666666664" />
         <entry key="..\:/Universidade FCUL/Mestrado Informatica/Computacao Movel/Projeto_CM/CM_Project/TrackMySport/app/src/main/res/layout/activity_main_page.xml" value="0.36666666666666664" />
-        <entry key="..\:/Universidade FCUL/Mestrado Informatica/Computacao Movel/Projeto_CM/CM_Project/TrackMySport/app/src/main/res/layout/activity_team.xml" value="0.36666666666666664" />
         <entry key="..\:/Universidade FCUL/Mestrado Informatica/Computacao Movel/Projeto_CM/CM_Project/TrackMySport/app/src/main/res/layout/activity_training_session.xml" value="0.36666666666666664" />
         <entry key="..\:/Universidade FCUL/Mestrado Informatica/Computacao Movel/Projeto_CM/CM_Project/TrackMySport/app/src/main/res/layout/fragment_create_training_session.xml" value="0.36666666666666664" />
         <entry key="..\:/Universidade FCUL/Mestrado Informatica/Computacao Movel/Projeto_CM/CM_Project/TrackMySport/app/src/main/res/layout/fragment_manage_training_sessions.xml" value="0.36666666666666664" />
-        <entry key="..\:/Universidade FCUL/Mestrado Informatica/Computacao Movel/Projeto_CM/CM_Project/TrackMySport/app/src/main/res/layout/item_session.xml" value="0.36666666666666664" />
-        <entry key="..\:/Universidade FCUL/Mestrado Informatica/Computacao Movel/Projeto_CM/CM_Project/TrackMySport/app/src/main/res/layout/item_team.xml" value="0.36666666666666664" />
-        <entry key="..\:/Universidade/Mestrado/1ano/ComputacaoMovel/Projeto/Codigo/CM_Project/TrackMySport/app/src/main/res/layout/activity_main_page.xml" value="0.2694746376811594" />
-        <entry key="..\:/Universidade/Mestrado/1ano/ComputacaoMovel/Projeto/Codigo/CM_Project/TrackMySport/app/src/main/res/layout/activity_team.xml" value="0.29583333333333334" />
-        <entry key="..\:/Universidade/Mestrado/1ano/ComputacaoMovel/Projeto/Codigo/CM_Project/TrackMySport/app/src/main/res/layout/activity_videos.xml" value="0.29583333333333334" />
-        <entry key="..\:/Universidade/Mestrado/1ano/ComputacaoMovel/Projeto/Codigo/CM_Project/TrackMySport/app/src/main/res/layout/fragment_create_team.xml" value="0.29583333333333334" />
-        <entry key="..\:/Universidade/Mestrado/1ano/ComputacaoMovel/Projeto/Codigo/CM_Project/TrackMySport/app/src/main/res/layout/fragment_create_training_session.xml" value="0.29583333333333334" />
-        <entry key="..\:/Universidade/Mestrado/1ano/ComputacaoMovel/Projeto/Codigo/CM_Project/TrackMySport/app/src/main/res/layout/fragment_transparent.xml" value="0.29583333333333334" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/activity_main.xml" value="0.26621847886098404" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/activity_main_page.xml" value="0.24537037037037038" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/activity_profile.xml" value="0.26621847886098404" />
@@ -40,6 +30,7 @@
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/fragment_first.xml" value="0.2630208333333333" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/fragment_manage_teams.xml" value="0.2630208333333333" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/fragment_navbar.xml" value="0.26621847886098404" />
+        <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/fragment_transparent.xml" value="0.2630208333333333" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/menu/menu_profile.xml" value="0.1609375" />
       </map>
     </option>

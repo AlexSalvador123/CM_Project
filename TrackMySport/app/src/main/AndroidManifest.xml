@@ -19,13 +19,22 @@
             android:exported="true" />
         <activity
             android:name=".Videos"
-            android:exported="true" />
+            android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.trackmysport.MainPage" />
+        </activity>
         <activity
             android:name=".Team"
-            android:exported="true" />
+            android:exported="true">
+        </activity>
         <activity
             android:name=".Profile"
-            android:exported="true" />
+            android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.trackmysport.MainPage" />
+        </activity>
         <activity
             android:name=".Register"
             android:exported="true" />

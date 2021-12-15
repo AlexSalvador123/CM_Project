@@ -83,16 +83,15 @@ public class Videos extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println("SIMMMM");
         if (requestCode == PICK_IMAGE) {
             String d = data.getData().toString();
             Uri uri = data.getData();
             if(d.contains("video")){
-                selectedVideo.bringToFront();
+                //selectedVideo.bringToFront();
                 selectedVideo.setVideoURI(data.getData());
             }
             else{
-                selectedImage.bringToFront();
+                //selectedImage.bringToFront();
                 selectedImage.setImageURI(data.getData());
             }
         }
