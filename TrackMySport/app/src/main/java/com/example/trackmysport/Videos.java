@@ -75,7 +75,7 @@ public class Videos extends AppCompatActivity {
         PaintCanvas paintCanvas = new PaintCanvas(getApplicationContext(), null, mGestureDetector);
         mGestureListener.setCanvas(paintCanvas);
 
-        setContentView(paintCanvas);// adds the created view to the screen
+        //setContentView(paintCanvas);// adds the created view to the screen
     }
 
 
