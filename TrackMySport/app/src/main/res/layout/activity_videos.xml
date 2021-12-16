@@ -39,25 +39,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <VideoView
-        android:id="@+id/selectedVideo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--<VideoView
+       android:id="@+id/selectedVideo"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />-->
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView2"
-        android:name="com.example.trackmysport.TransparentFragment"
-        android:layout_width="411dp"
-        android:layout_height="661dp"
-        app:layout_constraintBottom_toBottomOf="@+id/selectedVideo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/selectedImage"
-        app:layout_constraintVertical_bias="0.0" />
+   <androidx.fragment.app.FragmentContainerView
+       android:id="@+id/fragmentContainerView2"
+       android:name="com.example.trackmysport.TransparentFragment"
+       android:layout_width="0dp"
+       android:layout_height="661dp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.428"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="@+id/selectedImage" />
+
+   <TextView
+       android:id="@+id/textView3"
+       android:layout_width="132dp"
+       android:layout_height="99dp"
+       android:text="@string/coach"
+       android:textColor="#FF0000"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.43"
+       app:layout_constraintStart_toStartOf="parent"
+       tools:layout_editor_absoluteY="208dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
