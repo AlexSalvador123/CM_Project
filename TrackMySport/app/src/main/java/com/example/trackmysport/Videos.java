@@ -46,7 +46,7 @@ public class Videos extends AppCompatActivity {
         setContentView(R.layout.activity_videos);
 
         selectedImage = (ImageView)findViewById(R.id.selectedImage);
-        selectedVideo = (VideoView)findViewById(R.id.selectedVideo);
+        //selectedVideo = (VideoView)findViewById(R.id.selectedVideo);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.camera);
         fab.bringToFront();
