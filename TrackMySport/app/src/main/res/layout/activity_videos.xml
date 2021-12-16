@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@android:color/white" />
+        android:background="@android:color/holo_red_dark" />
 
 
     <VideoView
@@ -50,8 +50,9 @@
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent" />
 
+
    <androidx.fragment.app.FragmentContainerView
-       android:id="@+id/fragmentContainerView2"
+       android:id="@+id/transparentFragment"
        android:name="com.example.trackmysport.TransparentFragment"
        android:layout_width="0dp"
        android:layout_height="661dp"
@@ -59,16 +60,5 @@
        app:layout_constraintHorizontal_bias="0.428"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="@+id/selectedImage" />
-
-   <TextView
-       android:id="@+id/textView3"
-       android:layout_width="132dp"
-       android:layout_height="99dp"
-       android:text="@string/coach"
-       android:textColor="#FF0000"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintHorizontal_bias="0.43"
-       app:layout_constraintStart_toStartOf="parent"
-       tools:layout_editor_absoluteY="208dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

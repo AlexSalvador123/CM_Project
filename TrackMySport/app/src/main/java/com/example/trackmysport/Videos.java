@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.FragmentContainer;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,6 +19,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -38,6 +40,7 @@ public class Videos extends AppCompatActivity {
 
     ImageView selectedImage;
     VideoView selectedVideo;
+    View transparentFragment;
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
 
     @Override
@@ -46,7 +49,8 @@ public class Videos extends AppCompatActivity {
         setContentView(R.layout.activity_videos);
 
         selectedImage = (ImageView)findViewById(R.id.selectedImage);
-        //selectedVideo = (VideoView)findViewById(R.id.selectedVideo);
+        selectedVideo = (VideoView)findViewById(R.id.selectedVideo);
+        transparentFragment = findViewById(R.id.transparentFragment);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.camera);
         fab.bringToFront();
@@ -62,6 +66,16 @@ public class Videos extends AppCompatActivity {
                 openGallery(v);
             }
         });
+
+        GestureListener mGestureListener = new GestureListener();
+        GestureDetector mGestureDetector = new GestureDetector(getApplicationContext(), mGestureListener);
+        mGestureDetector.setIsLongpressEnabled(true);
+        mGestureDetector.setOnDoubleTapListener(mGestureListener);
+
+        PaintCanvas paintCanvas = new PaintCanvas(getApplicationContext(), null, mGestureDetector);
+        mGestureListener.setCanvas(paintCanvas);
+
+        setContentView(paintCanvas);// adds the created view to the screen
     }
 
 
@@ -78,6 +92,7 @@ public class Videos extends AppCompatActivity {
         intent.setType("image/* video/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+
     }
 
     @Override
@@ -86,13 +101,15 @@ public class Videos extends AppCompatActivity {
         if (requestCode == PICK_IMAGE) {
             String d = data.getData().toString();
             Uri uri = data.getData();
-            if(d.contains("video")){
-                //selectedVideo.bringToFront();
+            if(uri.toString().contains("video")){
+                selectedVideo.bringToFront();
                 selectedVideo.setVideoURI(data.getData());
+                transparentFragment.bringToFront();
             }
-            else{
-                //selectedImage.bringToFront();
+            else if(uri.toString().contains("image")){
+                selectedImage.bringToFront();
                 selectedImage.setImageURI(data.getData());
+                transparentFragment.bringToFront();
             }
         }
     }
