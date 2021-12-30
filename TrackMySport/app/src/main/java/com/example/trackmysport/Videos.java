@@ -27,6 +27,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.VideoView;
 
 
@@ -105,6 +106,12 @@ public class Videos extends AppCompatActivity {
                 selectedVideo.bringToFront();
                 selectedVideo.setVideoURI(data.getData());
                 transparentFragment.bringToFront();
+                MediaController mediaController = new MediaController(this);
+                mediaController.setAnchorView(selectedVideo);
+                // Set video link (mp4 format )
+                selectedVideo.setMediaController(mediaController);
+                selectedVideo.setVideoURI(uri);
+                selectedVideo.start();
             }
             else if(uri.toString().contains("image")){
                 selectedImage.bringToFront();
