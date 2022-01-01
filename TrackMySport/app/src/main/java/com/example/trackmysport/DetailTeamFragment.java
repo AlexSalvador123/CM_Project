@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 public class DetailTeamFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,10 +29,11 @@ public class Team extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_team);
-        fragmentCreate = findViewById(R.id.floatingActionButton);
+
 
         replaceFragment(new manageTeamsFragment());
-        fragmentCreate.setOnClickListener(new View.OnClickListener() {
+        fragmentCreate = findViewById(R.id.floatingActionButton);
+        /*fragmentCreate.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {
                   if (frag==true) {
@@ -43,7 +45,16 @@ public class Team extends AppCompatActivity {
                   }
               }
           }
-        );
+        );*/
+    }
+    public void onClickFloating(View view) {
+          if (frag==true) {
+              replaceFragment(new CreateTeamFragment());
+              frag=false;
+          }else{
+              replaceFragment(new manageTeamsFragment());
+              frag=true;
+          }
     }
 
     public void replaceFragment(Fragment fragment) {
@@ -64,6 +75,14 @@ public class Team extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.nameTeam);
         String name = editText.getText().toString();
         dr.child("Teams").child(name).child("teamname").setValue(name);
+        replaceFragment(new manageTeamsFragment());
+    }
+    public void eliminateTeam(View view){
+        fd = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
+        dr = fd.getReference();
+        TextView editText = (TextView) findViewById(R.id.titleTeamName);
+        String name = editText.getText().toString();
+        dr.child("Teams").child(name).removeValue();
         replaceFragment(new manageTeamsFragment());
     }
 

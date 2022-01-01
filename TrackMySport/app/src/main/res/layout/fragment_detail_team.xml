@@ -7,15 +7,34 @@
     tools:context=".DetailTeamFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView android:id="@+id/titleTeamName"
+
+    <TextView
+        android:id="@+id/titleTeamName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textStyle="bold"
+        android:text="@string/hello_blank_fragment"
         android:textSize="45sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textStyle="bold"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="@string/hello_blank_fragment" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.101" />
+
+    <Button
+        android:id="@+id/EliminateTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="eliminateTeam"
+        android:text="Eliminate Team"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.951" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

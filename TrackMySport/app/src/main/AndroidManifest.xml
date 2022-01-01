@@ -17,6 +17,9 @@
         <activity
             android:name=".TrainingSession"
             android:exported="true" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.trackmysport.MainPage" />
         <activity
             android:name=".Videos"
             android:exported="true">
@@ -27,6 +30,9 @@
         <activity
             android:name=".Team"
             android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.trackmysport.MainPage" />
         </activity>
         <activity
             android:name=".Profile"

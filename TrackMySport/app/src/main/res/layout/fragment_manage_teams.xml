@@ -28,4 +28,16 @@
 
         />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:onClick="onClickFloating"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="13dp"
+        android:backgroundTint="@color/black"
+        android:clickable="true" />
+
 </RelativeLayout>
