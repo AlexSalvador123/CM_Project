@@ -118,4 +118,6 @@
     <string name="user_id">user_id</string>
     <string name="logout">Logout</string>
     <string name="open">Open</string>
+    <string name="save">Save</string>
+    <string name="changePassword">Change Password</string>
 </resources>
