@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -29,6 +30,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.collection.LLRBNode;
 
 import java.util.Map;
 
@@ -37,7 +39,9 @@ public class Profile extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private static FirebaseDatabase firebasedb;
     private static DatabaseReference dbref;
-
+    private final String[] accountType = new String[1];
+    private final String[] phoneNumber = new String[1];
+    private final String[] name = new String[1];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +49,6 @@ public class Profile extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         //get data from database
         String email = mAuth.getCurrentUser().getEmail().toString();
-        final String[] accountType = new String[1];
-        final String[] phoneNumber = new String[1];
-        final String[] name = new String[1];
 
         firebasedb = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
         dbref = firebasedb.getReference("Users").child(mAuth.getCurrentUser().getUid());
@@ -62,12 +63,7 @@ public class Profile extends AppCompatActivity {
                 ((TextView) findViewById(R.id.textViewEmailProfile)).setText(
                         mAuth.getCurrentUser().getEmail());
                 ((TextView)findViewById(R.id.editPhoneNumber)).setText(phoneNumber[0]);
-                if(accountType[0].equals("Coach")){
-                    ((RadioButton) findViewById(R.id.radioButton3)).toggle();
-                }
-                else{
-                    ((RadioButton) findViewById(R.id.radioButton4)).toggle();
-                }
+                ((TextView)findViewById(R.id.account)).setText(accountType[0]);
             }
 
             @Override
@@ -97,6 +93,10 @@ public class Profile extends AppCompatActivity {
         oldPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
         newPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
         confirmPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+        oldPass.setHintTextColor(Color.GRAY);
+        newPass.setHintTextColor(Color.GRAY);
+        confirmPass.setHintTextColor(Color.GRAY);
 
         oldPass.setHint("Old Password");
         newPass.setHint("New Password");
@@ -153,7 +153,62 @@ public class Profile extends AppCompatActivity {
                     }
                 });
 
-        AlertDialog alert11 = alertDialog.create();
-        alert11.show();
+        AlertDialog alert = alertDialog.create();
+        alert.show();
+    }
+
+    public void changeAccountType(View view){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Profile.this);
+        alertDialog.setTitle("Change Account Type");
+
+        LinearLayout ll=new LinearLayout(Profile.this);
+        ll.setOrientation(LinearLayout.VERTICAL);
+
+        RadioGroup rg = new RadioGroup(Profile.this);
+        RadioButton coach = new RadioButton(Profile.this);
+        coach.setText("Coach");
+        RadioButton athlete = new RadioButton(Profile.this);
+        athlete.setText("Athlete");
+
+        rg.addView(coach);
+        rg.addView(athlete);
+        if (accountType[0].equals("Coach")){
+            coach.toggle();
+        }
+        else{
+            athlete.toggle();
+        }
+        ll.addView(rg);
+
+        alertDialog.setView(ll);
+
+        alertDialog.setPositiveButton("Save",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        String newAccountType = accountType[0];
+                        if(coach.isChecked()){
+                            newAccountType = "Coach";
+                        }
+                        else{
+                            newAccountType = "Athlete";
+                        }
+                        if(!newAccountType.equals(accountType[0])){
+                            firebasedb = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
+                            dbref = firebasedb.getReference();
+                            DatabaseReference userDB = dbref.child("Users").child(mAuth.getUid());
+                            userDB.child("accountType").setValue(newAccountType);
+                        }
+                        dialog.cancel();
+                    }
+                });
+        alertDialog.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert = alertDialog.create();
+        alert.show();
     }
 }
