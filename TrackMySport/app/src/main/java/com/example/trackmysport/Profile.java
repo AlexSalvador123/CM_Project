@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
@@ -198,6 +199,41 @@ public class Profile extends AppCompatActivity {
                             DatabaseReference userDB = dbref.child("Users").child(mAuth.getUid());
                             userDB.child("accountType").setValue(newAccountType);
                         }
+                        dialog.cancel();
+                    }
+                });
+        alertDialog.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert = alertDialog.create();
+        alert.show();
+    }
+
+    public void changePhoneNumber(View view){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Profile.this);
+        alertDialog.setTitle("Change Phone Number");
+
+        LinearLayout ll=new LinearLayout(Profile.this);
+        ll.setOrientation(LinearLayout.VERTICAL);
+
+        EditText phoneNumber = new EditText(Profile.this);
+        phoneNumber.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+        ll.addView(phoneNumber);
+
+        alertDialog.setView(ll);
+
+        alertDialog.setPositiveButton("Save",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        firebasedb = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
+                        dbref = firebasedb.getReference();
+                        DatabaseReference userDB = dbref.child("Users").child(mAuth.getUid());
+                        userDB.child("phoneNumber").setValue(phoneNumber.getText().toString());
                         dialog.cancel();
                     }
                 });

@@ -69,6 +69,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:onClick="changePhoneNumber"
         android:text="@string/phonenumber"
         android:textColor="#000000"
         android:textSize="16sp"
