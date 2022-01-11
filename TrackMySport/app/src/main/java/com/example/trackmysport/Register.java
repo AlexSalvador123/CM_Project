@@ -75,6 +75,7 @@ public class Register extends AppCompatActivity {
                                 userDB.child("name").setValue(name.getText().toString());
                                 userDB.child("phoneNumber").setValue(phoneNumber.getText().toString());
                                 userDB.child("accountType").setValue(accountType);
+                                userDB.child("email").setValue(email);
 
                             } else {
                                 updateUI(null);

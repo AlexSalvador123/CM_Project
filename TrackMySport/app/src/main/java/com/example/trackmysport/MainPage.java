@@ -34,4 +34,9 @@ public class MainPage extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void Whiteboard(View view){
+        Intent i = new Intent(this, Whiteboard.class);
+        startActivity(i);
+    }
+
 }

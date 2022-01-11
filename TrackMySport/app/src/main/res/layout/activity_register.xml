@@ -30,6 +30,9 @@
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
+        android:backgroundTint="#070707"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_title" />
@@ -39,6 +42,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#070707"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
         android:ems="10"
         android:hint="@string/name"
         android:inputType="textPersonName"
@@ -51,6 +57,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#070707"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
@@ -63,6 +72,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#070707"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
@@ -75,6 +87,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#070707"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
         android:ems="10"
         android:hint="@string/phonenumber"
         android:inputType="phone"
@@ -99,6 +114,7 @@
         android:layout_width="219dp"
         android:layout_height="51dp"
         android:layout_marginTop="16dp"
+        android:backgroundTint="#070707"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -108,12 +124,14 @@
             android:id="@+id/coach"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
+            android:textColor="#000000"
             android:text="@string/coach" />
 
         <RadioButton
             android:id="@+id/athlete"
             android:layout_width="137dp"
             android:layout_height="50dp"
+            android:textColor="#000000"
             android:text="@string/athlete" />
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

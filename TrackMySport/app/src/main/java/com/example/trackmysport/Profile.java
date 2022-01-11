@@ -69,9 +69,12 @@ public class Profile extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Intent i = new Intent(Profile.this, MainActivity.class);
+                startActivity(i);
+                finish();
             }
         });
+
         setContentView(R.layout.activity_profile);
     }
 
