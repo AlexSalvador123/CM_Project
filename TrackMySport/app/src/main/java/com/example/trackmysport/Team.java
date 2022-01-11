@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -131,6 +132,17 @@ public class Team extends AppCompatActivity {
                         EditText edit = (EditText) popE.findViewById(R.id.editTextEmailAddress4);
                         Editable editable = edit.getText();
                         String email = editable.toString();
+
+                        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://paintapp123-default-rtdb.europe-west1.firebasedatabase.app");
+                        DatabaseReference databaseReference = mDatabase.getReference();
+                        Task t = databaseReference.child("paints").get();
+
+                        DataSnapshot dataSnapshot = (DataSnapshot) t.getResult();
+                        for(DataSnapshot ds : dataSnapshot.getChildren()){
+                            items.add(ds.getKey());
+                            paints.put(ds.getKey(), (String)ds.getValue());
+                        }
+
 
                         /*fd = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
                         dr = fd.getReference();
