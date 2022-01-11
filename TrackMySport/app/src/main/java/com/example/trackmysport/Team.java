@@ -1,5 +1,6 @@
 package com.example.trackmysport;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -14,10 +15,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 public class Team extends AppCompatActivity {
 
@@ -109,51 +116,68 @@ public class Team extends AppCompatActivity {
                         String address = editable2.toString();
                         fd = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
                         dr = fd.getReference();
+                        String key = dr.push().getKey();
                         TextView editText = (TextView) findViewById(R.id.titleTeamName);
                         String name = editText.getText().toString();
-                        dr.child("Teams").child(name).child("events").child("1").child("date").setValue(date);
-                        dr.child("Teams").child(name).child("events").child("1").child("title").setValue(title);
-                        dr.child("Teams").child(name).child("events").child("1").child("address").setValue(address);
+                        dr.child("Teams").child(name).child("events").child(key).child("date").setValue(date);
+                        dr.child("Teams").child(name).child("events").child(key).child("title").setValue(title);
+                        dr.child("Teams").child(name).child("events").child(key).child("address").setValue(address);
 
                     }
                 });
         builder.show();
     }
 
-    public void addElement(View v){
+    public void addElement(View v) {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
-        final View popE = getLayoutInflater().inflate(R.layout.addelementpop,null);
+        final View popE = getLayoutInflater().inflate(R.layout.addelementpop, null);
+
         builder.setTitle("Event")
                 .setView(popE)
                 .setNegativeButton("cancel", null)
                 .setPositiveButton("done", new DialogInterface.OnClickListener() {
+
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         EditText edit = (EditText) popE.findViewById(R.id.editTextEmailAddress4);
                         Editable editable = edit.getText();
                         String email = editable.toString();
 
-                        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://paintapp123-default-rtdb.europe-west1.firebasedatabase.app");
+                        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
                         DatabaseReference databaseReference = mDatabase.getReference();
-                        Task t = databaseReference.child("paints").get();
-
-                        DataSnapshot dataSnapshot = (DataSnapshot) t.getResult();
-                        for(DataSnapshot ds : dataSnapshot.getChildren()){
-                            items.add(ds.getKey());
-                            paints.put(ds.getKey(), (String)ds.getValue());
-                        }
-
-
-                        /*fd = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
-                        dr = fd.getReference();
                         TextView editText = (TextView) findViewById(R.id.titleTeamName);
                         String name = editText.getText().toString();
-                        dr.child("Teams").child(name).child("events").child("1").child("date").setValue(date);*/
+                        databaseReference.child("Users").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                Boolean finish = false;
+                                for (DataSnapshot ds : snapshot.getChildren()) {
+                                    UserData data = ds.getValue(UserData.class);
+
+                                    if (email.equals(data.getEmail()) && !finish){
+                                        databaseReference.child("Users").child(ds.getKey()).child("Teams").child("name").setValue(name);
+                                        databaseReference.child("Teams").child(name).child("members").child("id").setValue(ds.getKey());
+                                        finish = true;
+                                    }
+
+                                }
+                                System.out.println(finish);
+                                if (!finish){
+                                    System.out.println("ola bom dia");
+                                        Toast.makeText(Team.this,"There's no users with this email address",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
 
                     }
                 });
         builder.show();
     }
 
-
-}
+};
