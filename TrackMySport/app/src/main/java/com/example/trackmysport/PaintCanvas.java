@@ -24,6 +24,7 @@ public class PaintCanvas extends View implements View.OnTouchListener{
         setOnTouchListener(this);
         setBackgroundColor(backGroundColor);
         initPaint();
+
     }
 
     public PaintCanvas(Context context, AttributeSet attrs, GestureDetector mGestureDetector) {
@@ -46,7 +47,6 @@ public class PaintCanvas extends View implements View.OnTouchListener{
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        mGestureDetector.onTouchEvent(event);
         return false; // let the event go to the rest of the listeners
     }
 

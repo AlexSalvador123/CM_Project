@@ -68,15 +68,6 @@ public class Videos extends AppCompatActivity {
             }
         });
 
-        GestureListener mGestureListener = new GestureListener();
-        GestureDetector mGestureDetector = new GestureDetector(getApplicationContext(), mGestureListener);
-        mGestureDetector.setIsLongpressEnabled(true);
-        mGestureDetector.setOnDoubleTapListener(mGestureListener);
-
-        PaintCanvas paintCanvas = new PaintCanvas(getApplicationContext(), null, mGestureDetector);
-        mGestureListener.setCanvas(paintCanvas);
-
-        //setContentView(paintCanvas);// adds the created view to the screen
     }
 
 
