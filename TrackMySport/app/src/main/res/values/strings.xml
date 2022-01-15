@@ -121,4 +121,11 @@
     <string name="save">Save</string>
     <string name="changePassword">Change Password</string>
     <string name="whiteboard">Whiteboard</string>
+    <string name="preferences">Preferences</string>
+    <string name="background">Background</string>
+    <string name="white">White</string>
+    <string name="handball">Handball</string>
+    <string name="football">Football</string>
+    <string name="basketball">Basketball</string>
+    <string name="strokeColor">Stroke Color</string>
 </resources>

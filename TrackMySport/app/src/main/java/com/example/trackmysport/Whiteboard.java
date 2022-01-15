@@ -21,19 +21,18 @@ import android.view.View;
 public class Whiteboard extends AppCompatActivity {
     private static final String TAG = "TAG";
     private int fragment = 0;
-
-    private Paint paint = new Paint();
-    private Path path = new Path();
-
-
-    private String background = "handball";
+    private PaintCanvas paintCanvas;
+    private String background = "white";
     Preferences preferences;
-    GestureListener mGestureListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_whiteboard);
+        ConstraintLayout whiteboard = findViewById(R.id.whiteboard);
+        paintCanvas = new PaintCanvas(Whiteboard.this, null);
+        whiteboard.addView(paintCanvas);
         preferences = new Preferences();
     }
 
@@ -75,6 +74,10 @@ public class Whiteboard extends AppCompatActivity {
 
     public void changeBackground(View view){
         background = view.getResources().getResourceName(view.getId()).replace("com.example.trackmysport:id/","");
+    }
+
+    public void undo(View view){
+        paintCanvas.undo();
     }
 
 }
