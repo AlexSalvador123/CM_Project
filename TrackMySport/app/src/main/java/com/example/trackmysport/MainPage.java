@@ -39,4 +39,9 @@ public class MainPage extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void Agenda(View view){
+        Intent i = new Intent(this, Agenda.class);
+        startActivity(i);
+    }
+
 }

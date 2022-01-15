@@ -6,14 +6,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.Calendar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,6 +36,8 @@ public class Team extends AppCompatActivity {
     boolean frag= true;
     private static FirebaseDatabase fd;
     private static DatabaseReference dr;
+    TextView dateText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,7 @@ public class Team extends AppCompatActivity {
               }
           }
         );*/
+
     }
     public void onClickFloating(View view) {
           if (frag==true) {
@@ -96,21 +102,63 @@ public class Team extends AppCompatActivity {
         replaceFragment(new manageTeamsFragment());
     }
 
+    /*public void showDatePickerDialog(){
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                Team.this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                        String date = "month/day/year: " + month + "/" + dayOfMonth + "/" + year;
+                        dateText.setText(date);
+                    }
+                },
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+    }
+    public void pickDate(View view){
+        System.out.println("entrei");
+        showDatePickerDialog();
+    }*/
+
+
+
     public void createEvent(View v){
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
         final View popV = getLayoutInflater().inflate(R.layout.eventpop,null);
+        final String[] date = new String[1];
+        popV.findViewById(R.id.pickDate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        Team.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                                dateText = popV.findViewById(R.id.showDatePicked);
+                                String date1 = month + "/" + dayOfMonth + "/" + year;
+                                date[0] = date1;
+                                dateText.setText(date[0]);
+                            }
+                        },
+                        Calendar.getInstance().get(Calendar.YEAR),
+                        Calendar.getInstance().get(Calendar.MONTH),
+                        Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.show();
+            }
+        });
         builder.setTitle("Event")
                 .setView(popV)
                 .setNegativeButton("cancel", null)
                 .setPositiveButton("done", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        EditText edit = (EditText) popV.findViewById(R.id.editTextDate);
-                        Editable editable = edit.getText();
-                        String date = editable.toString();
+
                         EditText edit1 = (EditText) popV.findViewById(R.id.editText);
                         Editable editable1 = edit1.getText();
                         String title = editable1.toString();
+
                         EditText edit2 = (EditText) popV.findViewById(R.id.editTextPostalAddress);
                         Editable editable2 = edit2.getText();
                         String address = editable2.toString();
@@ -119,7 +167,7 @@ public class Team extends AppCompatActivity {
                         String key = dr.push().getKey();
                         TextView editText = (TextView) findViewById(R.id.titleTeamName);
                         String name = editText.getText().toString();
-                        dr.child("Teams").child(name).child("events").child(key).child("date").setValue(date);
+                        dr.child("Teams").child(name).child("events").child(key).child("date").setValue(date[0]);
                         dr.child("Teams").child(name).child("events").child(key).child("title").setValue(title);
                         dr.child("Teams").child(name).child("events").child(key).child("address").setValue(address);
 
@@ -127,6 +175,7 @@ public class Team extends AppCompatActivity {
                 });
         builder.show();
     }
+
 
     public void addElement(View v) {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
@@ -155,8 +204,8 @@ public class Team extends AppCompatActivity {
                                     UserData data = ds.getValue(UserData.class);
 
                                     if (email.equals(data.getEmail()) && !finish){
-                                        databaseReference.child("Users").child(ds.getKey()).child("Teams").child("name").setValue(name);
-                                        databaseReference.child("Teams").child(name).child("members").child("id").setValue(ds.getKey());
+                                        databaseReference.child("Users").child(ds.getKey()).child("Teams").child(name).child("name").setValue(name);
+                                        databaseReference.child("Teams").child(name).child("members").child(ds.getKey()).child("id").setValue(ds.getKey());
                                         finish = true;
                                     }
 
