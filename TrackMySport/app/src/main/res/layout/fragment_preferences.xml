@@ -176,10 +176,11 @@
                     android:layout_height="match_parent" >
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button12"
+                        android:id="@+id/whitePedro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#000000" />
+                        android:backgroundTint="#000000"
+                        android:text="@string/whitePedro" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button13"
@@ -191,7 +192,7 @@
                         android:id="@+id/button14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#2962FF" />
+                        android:backgroundTint="#FF29FB" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button18"
@@ -208,7 +209,7 @@
                         android:id="@+id/button19"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#AEEA00" />
+                        android:backgroundTint="#7307A1" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button15"

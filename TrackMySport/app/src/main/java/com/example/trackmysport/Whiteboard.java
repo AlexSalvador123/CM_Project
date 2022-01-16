@@ -80,4 +80,8 @@ public class Whiteboard extends AppCompatActivity {
         paintCanvas.undo();
     }
 
+    public void erase(View view){
+        paintCanvas.erase();
+    };
+
 }

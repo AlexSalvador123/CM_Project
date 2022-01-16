@@ -102,12 +102,13 @@ public class PaintCanvas extends View implements View.OnTouchListener{
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setStrokeWidth(20f);
-        paint.setColor(Color.BLACK);
+        paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeJoin(Paint.Join.ROUND);
         this.paintsList.add(paint);
         this.pathsList.add(new Path());
     }
+
     public void undo(){
         try{
             this.paintsList.remove(this.paintsList.size()-1);
@@ -116,5 +117,11 @@ public class PaintCanvas extends View implements View.OnTouchListener{
         } catch (Exception e) {
             invalidate();
         }
+    }
+
+    public void erase(){
+        this.pathsList.clear();
+        this.paintsList.clear();
+        invalidate();
     }
 }
