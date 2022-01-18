@@ -22,6 +22,7 @@ public class PaintCanvas extends View implements View.OnTouchListener{
     private Bitmap bitmap = null;
     private int backGroundColor = Color.TRANSPARENT;
     private GestureDetector mGestureDetector;
+    int color = Color.BLACK;
 
     public PaintCanvas(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -91,21 +92,15 @@ public class PaintCanvas extends View implements View.OnTouchListener{
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setStrokeWidth(20f);
-        paint.setColor(Color.BLACK);
+        paint.setColor(this.color);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeJoin(Paint.Join.ROUND);
         this.paintsList.add(paint);
         this.pathsList.add(new Path());
     }
 
-    public void changeStrokeColor(){
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setStrokeWidth(20f);
-        paint.setColor(Color.RED);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeJoin(Paint.Join.ROUND);
-
+    public void changeStrokeColor(int color){
+        this.color = color;
     }
 
     public void undo(){

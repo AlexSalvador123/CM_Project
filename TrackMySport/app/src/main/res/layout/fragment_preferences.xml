@@ -176,30 +176,32 @@
                     android:layout_height="match_parent" >
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/whitePedro"
+                        android:id="@+id/b000000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#000000"
-                        android:onClick="changeColor"
-                        android:text="@string/whitePedro" />
+                        android:onClick="changeColor"/>
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button13"
+                        android:id="@+id/b304FFE"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#304FFE" />
+                        android:backgroundTint="#304FFE"
+                        android:onClick="changeColor"/>
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button14"
+                        android:id="@+id/bFF29FB"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#FF29FB" />
+                        android:backgroundTint="#FF29FB"
+                        android:onClick="changeColor"/>
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button18"
+                        android:id="@+id/b00C853"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#00C853" />
+                        android:backgroundTint="#00C853"
+                        android:onClick="changeColor"/>
                 </TableRow>
 
                 <TableRow
@@ -207,28 +209,32 @@
                     android:layout_height="match_parent" >
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button19"
+                        android:id="@+id/b7307A1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#7307A1" />
+                        android:backgroundTint="#7307A1"
+                        android:onClick="changeColor"/>
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button15"
+                        android:id="@+id/bFFD600"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#FFD600" />
+                        android:backgroundTint="#FFD600"
+                        android:onClick="changeColor"/>
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button16"
+                        android:id="@+id/bFF6D00"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#FF6D00" />
+                        android:backgroundTint="#FF6D00"
+                        android:onClick="changeColor"/>
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button17"
+                        android:id="@+id/bDD2C00"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#DD2C00" />
+                        android:backgroundTint="#DD2C00"
+                        android:onClick="changeColor"/>
                 </TableRow>
 
             </TableLayout>
