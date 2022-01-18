@@ -2,21 +2,29 @@ package com.example.trackmysport;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.RippleDrawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+
+import java.lang.reflect.Field;
 
 public class Whiteboard extends AppCompatActivity {
     private static final String TAG = "TAG";
@@ -85,7 +93,9 @@ public class Whiteboard extends AppCompatActivity {
     }
 
     public void changeColor(View view){
-        paintCanvas.changeStrokeColor();
+        String id = view.getResources().getResourceName(view.getId());
+        int color = Color.parseColor(id.replace("com.example.trackmysport:id/b","#"));
+        paintCanvas.changeStrokeColor(color);
     }
 
 }

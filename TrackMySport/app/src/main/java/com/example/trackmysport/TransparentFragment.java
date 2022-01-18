@@ -31,6 +31,7 @@ public class TransparentFragment extends Fragment{
     private ArrayList<Paint> paintsList;
     private ArrayList<Path> pathsList;
     private Bitmap bitmap = null;
+    private PaintCanvas paint;
 
     public TransparentFragment() {
         // Required empty public constructor
@@ -44,6 +45,7 @@ public class TransparentFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        paint = new PaintCanvas(getContext(), null);
     }
 
     @Override
@@ -53,7 +55,7 @@ public class TransparentFragment extends Fragment{
         //return inflater.inflate(R.layout.fragment_transparent, container, false);
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_transparent, null);
         ConstraintLayout constraintLayout = (ConstraintLayout) root.findViewById(R.id.frameLayout2);
-        constraintLayout.addView(new Draw(getContext()));
+        constraintLayout.addView(paint);
         return root;
     }
 
