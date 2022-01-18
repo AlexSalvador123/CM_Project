@@ -105,8 +105,7 @@ public class PaintCanvas extends View implements View.OnTouchListener{
         paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeJoin(Paint.Join.ROUND);
-        this.paintsList.add(paint);
-        this.pathsList.add(new Path());
+
     }
 
     public void undo(){

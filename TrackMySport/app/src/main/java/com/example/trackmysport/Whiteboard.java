@@ -82,6 +82,10 @@ public class Whiteboard extends AppCompatActivity {
 
     public void erase(View view){
         paintCanvas.erase();
-    };
+    }
+
+    public void changeColor(View view){
+        paintCanvas.changeStrokeColor();
+    }
 
 }

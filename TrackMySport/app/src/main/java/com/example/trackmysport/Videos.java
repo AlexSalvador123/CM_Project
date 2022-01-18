@@ -80,11 +80,9 @@ public class Videos extends AppCompatActivity {
     }
 
     private void openGallery(View view){
-        Intent intent = new Intent();
-        intent.setType("image/* video/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
-
+        Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        galleryIntent.setType("*/*");
+        startActivityForResult(galleryIntent, PICK_IMAGE);
     }
 
     @Override
