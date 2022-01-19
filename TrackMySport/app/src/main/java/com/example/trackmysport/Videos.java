@@ -51,25 +51,26 @@ public class Videos extends AppCompatActivity {
     private int fragment = 0;
     private static final String TAG = "TAG";
     PaintCanvas paintCanvas;
-
-
     ImageView selectedImage;
     VideoView selectedVideo;
+    private FloatingActionButton undoPaintingVideo;
+    private FloatingActionButton deletePaintingVideo;
+    private FloatingActionButton preferencesVideo;
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_videos);
-        mMediaController = new MediaController(this);
         selectedImage = (ImageView) findViewById(R.id.selectedImage);
         selectedVideo = (VideoView) findViewById(R.id.selectedVideo);
-        selectedVideo.setMediaController(mMediaController);
         colorsVideo = new colorsVideo();
         ConstraintLayout videos = findViewById(R.id.video);
         paintCanvas = new PaintCanvas(Videos.this, null);
         videos.addView(paintCanvas);
-
+        undoPaintingVideo = findViewById(R.id.undoPaintingVideo);
+        deletePaintingVideo = findViewById(R.id.deletePaintingVideo);
+        preferencesVideo = findViewById(R.id.preferencesVideo);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.camera);
@@ -115,10 +116,7 @@ public class Videos extends AppCompatActivity {
                 selectedVideo.bringToFront();
                 selectedVideo.setVideoURI(data.getData());
                 paintCanvas.bringToFront();
-                MediaController mediaController = new MediaController(this);
-                mediaController.setAnchorView(selectedVideo);
                 // Set video link (mp4 format )
-                selectedVideo.setMediaController(mediaController);
                 selectedVideo.setVideoURI(uri);
                 selectedVideo.start();
             }
@@ -133,6 +131,9 @@ public class Videos extends AppCompatActivity {
 
     public void openPreferencesVideo(View view){
         if(fragment == 0){
+            undoPaintingVideo.hide();
+            deletePaintingVideo.hide();
+            preferencesVideo.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_back_20));
             FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction transaction = manager.beginTransaction();
             transaction.add(R.id.video, colorsVideo);
@@ -141,6 +142,9 @@ public class Videos extends AppCompatActivity {
             fragment = 1;
         }
         else{
+            undoPaintingVideo.show();
+            deletePaintingVideo.show();
+            preferencesVideo.setImageDrawable(getResources().getDrawable(R.drawable.baseline_settings_20));
             getSupportFragmentManager().popBackStack();
             fragment = 0;
             ConstraintLayout colorsVideo = findViewById(R.id.video);
