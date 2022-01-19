@@ -1,22 +1,33 @@
 package com.example.trackmysport;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TrainingSession extends AppCompatActivity {
 
@@ -25,6 +36,8 @@ public class TrainingSession extends AppCompatActivity {
     private static FirebaseDatabase firebasedb;
     private static DatabaseReference dbref;
     private BottomNavigationView bottomNavigationView;
+    private FirebaseAuth mAuth;
+    public static String current_plan = new String();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,21 +52,26 @@ public class TrainingSession extends AppCompatActivity {
               public void onClick(View view) {
                   if (frag==1) {
                       replace_sessions_fragment(new CreateTrainingSessionFragment());
+                      fragmentCreate.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_back_20));
                       frag=0;
                   }else if (frag==0){
                       replace_sessions_fragment(new ManageTrainingSessionsFragment());
+                      fragmentCreate.setImageDrawable(getResources().getDrawable(R.drawable.plus_foreground));
                       frag=1;
-                  }else{
+                  }/*else{
                       replace_sessions_fragment(new ManageTrainingSessionsFragment());
                       frag=1;
-                  }
+                      fragmentCreate.setImageDrawable(getResources().getDrawable(R.drawable.plus_foreground));
+                  }*/
               }
             }
+
         );
 
         bottomNavigationView = findViewById(R.id.bottomNav);
         bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
         bottomNavigationView.setSelectedItemId(R.id.player);
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener bottomNavMethod = new
@@ -139,9 +157,61 @@ public class TrainingSession extends AppCompatActivity {
         String reps2_session_string = reps2_session.getText().toString();
         dbref.child("Training Plans").child(name_session_string).child("plan_reps2").setValue(reps2_session_string);
 
+        //associated team
+        dbref.child("Training Plans").child(name_session_string).child("Team").setValue("*");
+
 
         replace_sessions_fragment(new ManageTrainingSessionsFragment());
+        fragmentCreate.setImageDrawable(getResources().getDrawable(R.drawable.plus_foreground));
     }
+    public void show_teams_list(View v) {
 
+        mAuth = FirebaseAuth.getInstance();
+        //get data from database
+        String email = mAuth.getCurrentUser().getUid().toString();
+
+        FirebaseDatabase dataBaseFire  = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference dataBaseFireReference = dataBaseFire .getReference();
+        Task task_ = dataBaseFireReference.child("Users").child(email).child("Teams").get();
+        task_.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                try {
+                    DataSnapshot dataSnapshot = (DataSnapshot) task_.getResult();
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TrainingSession.this);
+                    builder.setTitle("Which Team do you want to assign this plan to?");
+                    ArrayList<String> items = new ArrayList<String>();
+                    HashMap<String,String> drawings = new HashMap<String, String>();
+                    for(DataSnapshot ds : dataSnapshot.getChildren()){
+                        items.add(ds.getKey());
+                        //drawings.put(ds.getKey(), (String)ds.getValue());
+                    }
+                    String[] itemsArray = items.toArray(new String[0]);
+                    System.out.println("items: " + items);
+                    builder.setItems(itemsArray, new DialogInterface.OnClickListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.O)
+                        @Override
+                        public void onClick(DialogInterface dialog, int canvas_index) {
+                            // ao clicar numa equipa, associá-la na base de dados a um plano de treino
+
+                            System.out.println("Estamos no plano " + current_plan);
+                            System.out.println("Foi escolhida a equipa " + itemsArray[canvas_index]);
+                            dataBaseFireReference.child("Training Plans").child(current_plan).child("Team").setValue(itemsArray[canvas_index]);
+
+
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+            }
+        });
+
+    }
 
 }

@@ -60,4 +60,15 @@ public class DrawActivities extends AppCompatActivity {
                     return false;
                 }
             };
+
+    public void WhiteBoardDraw(View view){
+        Intent i = new Intent(this, Whiteboard.class);
+        startActivity(i);
+    }
+
+    public void VideosDraw(View view){
+        Intent i = new Intent(this, Videos.class);
+        startActivity(i);
+    }
+
 }

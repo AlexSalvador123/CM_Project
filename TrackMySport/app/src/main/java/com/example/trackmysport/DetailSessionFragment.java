@@ -1,9 +1,17 @@
 package com.example.trackmysport;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -11,7 +19,19 @@ import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class DetailSessionFragment extends Fragment {
@@ -26,6 +46,8 @@ public class DetailSessionFragment extends Fragment {
     private static final String ARG_PARAM6 = "param6";
     private static final String ARG_PARAM7 = "param7";
     private static final String ARG_PARAM8 = "param8";
+    private static final String ARG_PARAM9 = "param9";
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -36,13 +58,14 @@ public class DetailSessionFragment extends Fragment {
     private String mParam6;
     private String mParam7;
     private String mParam8;
+    private String mParam9;
 
 
     public DetailSessionFragment() {
         // Required empty public constructor
     }
 
-    public static DetailSessionFragment newInstance(String param1, String param2, String param3, String param4, String param5, String param6, String param7, String param8) {
+    public static DetailSessionFragment newInstance(String param1, String param2, String param3, String param4, String param5, String param6, String param7, String param8, String param9) {
         DetailSessionFragment fragment = new DetailSessionFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -53,6 +76,7 @@ public class DetailSessionFragment extends Fragment {
         args.putString(ARG_PARAM6, param6);
         args.putString(ARG_PARAM7, param7);
         args.putString(ARG_PARAM8, param8);
+        args.putString(ARG_PARAM9, param9);
         fragment.setArguments(args);
         return fragment;
     }
@@ -70,6 +94,7 @@ public class DetailSessionFragment extends Fragment {
             mParam6 = getArguments().getString(ARG_PARAM6);
             mParam7 = getArguments().getString(ARG_PARAM7);
             mParam8 = getArguments().getString(ARG_PARAM8);
+            mParam9 = getArguments().getString(ARG_PARAM9);
         }
     }
 
@@ -111,7 +136,12 @@ public class DetailSessionFragment extends Fragment {
         TextView ex2_reps_session = view.findViewById(R.id.title_line2_3);
         ex2_reps_session.setText(mParam8);
 
+        //current team
+        TextView curr_team = view.findViewById(R.id.current_team_session);
+        curr_team.setText(mParam9);
 
         return view;
     }
+
 }
+

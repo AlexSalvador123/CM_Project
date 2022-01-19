@@ -67,7 +67,9 @@ public class ManageTrainingSessionsFragment extends Fragment implements SessionA
     public void onItemClick(SessionData data_session) {
         Fragment fragment = DetailSessionFragment.newInstance(data_session.getPlan_name(), data_session.getPlan_difficulty(), data_session.getPlan_exercise1(),
                 data_session.getPlan_time1(), data_session.getPlan_reps1(), data_session.getPlan_exercise2(),data_session.getPlan_time2(),
-                data_session.getPlan_reps2());
+                data_session.getPlan_reps2(), data_session.getTeam());
+
+        TrainingSession.current_plan = data_session.getPlan_name();
 
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 
