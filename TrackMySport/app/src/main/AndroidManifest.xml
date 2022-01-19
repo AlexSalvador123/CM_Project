@@ -20,9 +20,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TrackMySport">
         <activity
+            android:name=".DrawActivities"
+            android:exported="true" />
+        <activity
             android:name=".Agenda"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Whiteboard"
             android:exported="true">
@@ -30,13 +32,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.trackmysport.MainPage" />
         </activity>
-
         <activity
             android:name=".TrainingSession"
-            android:exported="true"/>
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.trackmysport.MainPage" />
+            android:exported="true" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.trackmysport.MainPage" />
+
         <activity
             android:name=".Videos"
             android:exported="true">
