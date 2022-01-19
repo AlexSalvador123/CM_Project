@@ -44,6 +44,7 @@ public class manageTeamsFragment extends Fragment implements Adapter.ItemClickLi
         adapter = new Adapter(getContext(), list,this);
         recyclerView.setAdapter(adapter);
 
+
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
