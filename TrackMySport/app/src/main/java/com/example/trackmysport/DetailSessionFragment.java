@@ -46,8 +46,7 @@ public class DetailSessionFragment extends Fragment {
     private static final String ARG_PARAM6 = "param6";
     private static final String ARG_PARAM7 = "param7";
     private static final String ARG_PARAM8 = "param8";
-    private FirebaseAuth mAuth;
-    Button fragmentShowTeams;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -133,64 +132,8 @@ public class DetailSessionFragment extends Fragment {
         TextView ex2_reps_session = view.findViewById(R.id.title_line2_3);
         ex2_reps_session.setText(mParam8);
 
-        fragmentShowTeams = view.findViewById(R.id.show_teams_button);
-        fragmentShowTeams.setOnClickListener(new View.OnClickListener() {
-                                              @Override
-                                              public void onClick(View view) {
-                                                  //something happens
-                                                  show_teams_list(view);
-                                              }
-        });
-
-
         return view;
     }
-    public void show_teams_list(View v) {
 
-        mAuth = FirebaseAuth.getInstance();
-        //get data from database
-        String email = mAuth.getCurrentUser().getUid().toString();
-
-        FirebaseDatabase dataBaseFire  = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
-        DatabaseReference dataBaseFireReference = dataBaseFire .getReference();
-        Task task_ = dataBaseFireReference.child("Users").child(email).child("Teams").get();
-        task_.addOnCompleteListener(new OnCompleteListener() {
-            @Override
-            public void onComplete(@NonNull Task task) {
-                try {
-                    DataSnapshot dataSnapshot = (DataSnapshot) task_.getResult();
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity().getApplicationContext());
-                    builder.setTitle("Which Team do you want?");
-                    ArrayList<String> items = new ArrayList<String>();
-                    HashMap<String,String> drawings = new HashMap<String, String>();
-                    for(DataSnapshot ds : dataSnapshot.getChildren()){
-                        items.add(ds.getKey());
-                        //drawings.put(ds.getKey(), (String)ds.getValue());
-                    }
-                    String[] itemsArray = items.toArray(new String[0]);
-                    System.out.println("items: " + items);
-                    builder.setItems(itemsArray, new DialogInterface.OnClickListener() {
-                        @RequiresApi(api = Build.VERSION_CODES.O)
-                        @Override
-                        public void onClick(DialogInterface dialog, int canvas_index) {
-                            // ao clicar numa equipa, associá-la na base de dados a um plano de treino
-
-                            /*System.out.println("---------------------------" + drawings.get(itemsArray[canvas_index]));
-                            new_fragment2.getDesiredDrawing(drawings.get(itemsArray[canvas_index]));*/
-
-                        }
-                    });
-
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-
-                } catch (Throwable throwable) {
-                    throwable.printStackTrace();
-                }
-            }
-        });
-
-    }
 }
 

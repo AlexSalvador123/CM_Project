@@ -69,6 +69,8 @@ public class ManageTrainingSessionsFragment extends Fragment implements SessionA
                 data_session.getPlan_time1(), data_session.getPlan_reps1(), data_session.getPlan_exercise2(),data_session.getPlan_time2(),
                 data_session.getPlan_reps2());
 
+        TrainingSession.current_plan = data_session.getPlan_name();
+
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 
         transaction.hide(getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container_sessions));
