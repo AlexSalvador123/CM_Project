@@ -172,5 +172,17 @@
 
     </RelativeLayout>
 
+    <Button
+        android:id="@+id/show_teams_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:layout_marginBottom="150dp"
+        android:text="Select Team"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_relativeLayout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
