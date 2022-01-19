@@ -15,11 +15,13 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.hardware.Camera;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -38,6 +40,8 @@ import java.util.ArrayList;
 public class Videos extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     public static final int PICK_IMAGE = 17;
+    private MediaController mMediaController;
+    private int position = 1;
 
     ImageView selectedImage;
     VideoView selectedVideo;
@@ -48,10 +52,11 @@ public class Videos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_videos);
-
-        selectedImage = (ImageView)findViewById(R.id.selectedImage);
-        selectedVideo = (VideoView)findViewById(R.id.selectedVideo);
+        mMediaController = new MediaController(this);
+        selectedImage = (ImageView) findViewById(R.id.selectedImage);
+        selectedVideo = (VideoView) findViewById(R.id.selectedVideo);
         transparentFragment = findViewById(R.id.transparentFragment);
+        selectedVideo.setMediaController(mMediaController);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.camera);
         fab.bringToFront();
@@ -62,13 +67,14 @@ public class Videos extends AppCompatActivity {
         });
 
         Button gallery = (Button) findViewById(R.id.openGallery);
-        gallery.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        gallery.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 openGallery(v);
             }
         });
-
     }
+
+
 
 
     private void takePicture(View view) {
