@@ -78,7 +78,7 @@ public class TrainingSession extends AppCompatActivity {
             BottomNavigationView.OnNavigationItemSelectedListener(){
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    System.out.println(item.getItemId());
+
                     switch(item.getItemId()){
                         case R.id.player:
                             return true;
@@ -188,15 +188,14 @@ public class TrainingSession extends AppCompatActivity {
                         //drawings.put(ds.getKey(), (String)ds.getValue());
                     }
                     String[] itemsArray = items.toArray(new String[0]);
-                    System.out.println("items: " + items);
+
                     builder.setItems(itemsArray, new DialogInterface.OnClickListener() {
                         @RequiresApi(api = Build.VERSION_CODES.O)
                         @Override
                         public void onClick(DialogInterface dialog, int canvas_index) {
                             // ao clicar numa equipa, associá-la na base de dados a um plano de treino
 
-                            System.out.println("Estamos no plano " + current_plan);
-                            System.out.println("Foi escolhida a equipa " + itemsArray[canvas_index]);
+
                             dataBaseFireReference.child("Training Plans").child(current_plan).child("Team").setValue(itemsArray[canvas_index]);
 
 
