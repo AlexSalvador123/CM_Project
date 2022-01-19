@@ -43,6 +43,7 @@ public class Team extends AppCompatActivity {
     TextView dateText;
     private FirebaseAuth mAuth;
     private BottomNavigationView bottomNavigationView;
+    private FloatingActionButton floatingActionButton;
 
 
     @Override
@@ -50,8 +51,10 @@ public class Team extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_team);
+        setTitle("Teams");
         bottomNavigationView = findViewById(R.id.bottomNav);
         bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
+        bottomNavigationView.setSelectedItemId(R.id.teams);
 
         replaceFragment(new manageTeamsFragment());
         fragmentCreate = findViewById(R.id.floatingActionButton);
@@ -80,22 +83,21 @@ public class Team extends AppCompatActivity {
                         case R.id.player:
                             Intent i1 = new Intent(Team.this, TrainingSession.class);
                             startActivity(i1);
-                            break;
+                            return true;
                         case R.id.teams:
-                            Intent i2 = new Intent(Team.this, Team.class);
-                            startActivity(i2);
-                            break;
+
+                            return true;
                         case R.id.teach:
 
-                            break;
+                            return true;
                         case R.id.agenda:
                             Intent i4 = new Intent(Team.this, Agenda.class);
                             startActivity(i4);
-                            break;
+                            return true;
                         case R.id.profile:
                             Intent i5 = new Intent(Team.this, Profile.class);
                             startActivity(i5);
-                            break;
+                            return true;
 
                     }
                     return false;

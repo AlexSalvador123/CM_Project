@@ -23,7 +23,7 @@
            android:id="@+id/createTeam_button"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:backgroundTint="#000000"
+           android:backgroundTint="#43A047"
            android:onClick="createTeam"
            android:text="Create Team"
            app:layout_constraintBottom_toBottomOf="parent"
@@ -33,16 +33,17 @@
 
        <com.google.android.material.floatingactionbutton.FloatingActionButton
            android:id="@+id/floatingActionButton"
-           android:layout_width="50dp"
-           android:layout_height="50dp"
-           android:layout_alignParentStart="true"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentEnd="true"
            android:layout_alignParentBottom="true"
-           android:layout_marginStart="8dp"
+           android:layout_marginEnd="8dp"
            android:layout_marginBottom="13dp"
-           android:backgroundTint="@color/black"
            android:clickable="true"
            android:onClick="onClickFloating"
+           android:src="@drawable/baseline_arrow_back_20"
+           app:backgroundTint="#43A047"
            app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintStart_toStartOf="parent" />
+           app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

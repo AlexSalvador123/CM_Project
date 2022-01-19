@@ -67,6 +67,7 @@ public class Agenda extends AppCompatActivity{
 
         bottomNavigationView = findViewById(R.id.bottomNav);
         bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
+        bottomNavigationView.setSelectedItemId(R.id.agenda);
 
 
         databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Teams").addValueEventListener(new ValueEventListener() {
@@ -167,22 +168,20 @@ public class Agenda extends AppCompatActivity{
                         case R.id.player:
                             Intent i1 = new Intent(Agenda.this, TrainingSession.class);
                             startActivity(i1);
-                            break;
+                            return true;
                         case R.id.teams:
                             Intent i2 = new Intent(Agenda.this, Team.class);
                             startActivity(i2);
-                            break;
+                            return true;
                         case R.id.teach:
 
-                            break;
+                            return true;
                         case R.id.agenda:
-                            Intent i4 = new Intent(Agenda.this, Agenda.class);
-                            startActivity(i4);
-                            break;
+                            return true;
                         case R.id.profile:
                             Intent i5 = new Intent(Agenda.this, Profile.class);
                             startActivity(i5);
-                            break;
+                            return true;
 
                     }
                     return false;

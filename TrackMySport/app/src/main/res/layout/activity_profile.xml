@@ -182,5 +182,14 @@
         app:layout_constraintTop_toBottomOf="@+id/editPhoneNumber"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="407dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/nav" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

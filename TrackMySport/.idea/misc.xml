@@ -45,6 +45,11 @@
         <entry key="..\:/Universidade/Mestrado/1ano/ComputacaoMovel/Projeto/Codigo/CM_Project/TrackMySport/app/src/main/res/layout/fragment_preferences.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/drawable/baseline_arrow_back_20.xml" value="0.18072916666666666" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/drawable/baseline_settings_20.xml" value="0.18072916666666666" />
+        <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/drawable/ic_launcher_background.xml" value="0.184375" />
+        <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.184375" />
+        <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/drawable/plus.xml" value="0.184375" />
+        <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/drawable/plus_background.xml" value="0.18072916666666666" />
+        <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/drawable/plus_foreground.xml" value="0.18072916666666666" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/activity_main.xml" value="0.26621847886098404" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/activity_main_page.xml" value="0.24537037037037038" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/activity_profile.xml" value="0.26621847886098404" />
@@ -60,7 +65,7 @@
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/fragment_create_team.xml" value="0.2630208333333333" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/fragment_create_training_session.xml" value="0.2630208333333333" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/fragment_first.xml" value="0.2630208333333333" />
-        <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/fragment_manage_teams.xml" value="0.2630208333333333" />
+        <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/fragment_manage_teams.xml" value="0.26621847886098404" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/fragment_navbar.xml" value="0.26621847886098404" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/fragment_preferences.xml" value="0.4033546325878594" />
         <entry key="..\:/Users/danie/Desktop/CM_Project/TrackMySport/app/src/main/res/layout/fragment_transparent.xml" value="0.2630208333333333" />
