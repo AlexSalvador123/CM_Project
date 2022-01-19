@@ -21,7 +21,7 @@
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2Videos"
+        android:id="@+id/preferencesVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -33,26 +33,26 @@
         app:srcCompat="@android:drawable/ic_menu_preferences" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton5"
+        android:id="@+id/deletePaintingVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="6dp"
         android:clickable="true"
         android:onClick="erase"
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton2Videos"
+        app:layout_constraintBottom_toTopOf="@+id/preferencesVideo"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_menu_delete" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton6"
+        android:id="@+id/undoPaintingVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="6dp"
         android:clickable="true"
         android:onClick="undo"
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton5"
+        app:layout_constraintBottom_toTopOf="@+id/deletePaintingVideo"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_menu_revert" />
 
