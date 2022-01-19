@@ -22,6 +22,16 @@ public class DrawActivities extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.teach);
     }
 
+    public void GoToVideos(View view){
+        Intent i = new Intent(DrawActivities.this, Videos.class);
+        startActivity(i);
+    }
+
+    public void GoToWhiteboard(View view){
+        Intent i = new Intent(DrawActivities.this, Whiteboard.class);
+        startActivity(i);
+    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener bottomNavMethod = new
             BottomNavigationView.OnNavigationItemSelectedListener(){
                 @Override
