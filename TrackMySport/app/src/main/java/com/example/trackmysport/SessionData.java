@@ -9,6 +9,7 @@ public class SessionData {
     String plan_exercise2;
     String plan_time2;
     String plan_reps2;
+    String Team;
 
 
     public String getPlan_name() {
@@ -41,5 +42,9 @@ public class SessionData {
 
     public String getPlan_reps2() {
         return plan_reps2;
+    }
+
+    public String getTeam() {
+        return Team;
     }
 }

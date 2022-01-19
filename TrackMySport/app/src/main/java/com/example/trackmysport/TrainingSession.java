@@ -58,11 +58,11 @@ public class TrainingSession extends AppCompatActivity {
                       replace_sessions_fragment(new ManageTrainingSessionsFragment());
                       fragmentCreate.setImageDrawable(getResources().getDrawable(R.drawable.plus_foreground));
                       frag=1;
-                  }else{
+                  }/*else{
                       replace_sessions_fragment(new ManageTrainingSessionsFragment());
                       frag=1;
                       fragmentCreate.setImageDrawable(getResources().getDrawable(R.drawable.plus_foreground));
-                  }
+                  }*/
               }
             }
 
