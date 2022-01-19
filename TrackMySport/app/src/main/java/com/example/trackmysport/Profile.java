@@ -45,6 +45,8 @@ public class Profile extends AppCompatActivity {
     private final String[] accountType = new String[1];
     private final String[] phoneNumber = new String[1];
     private final String[] name = new String[1];
+    private BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +54,6 @@ public class Profile extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         //get data from database
         String email = mAuth.getCurrentUser().getEmail().toString();
-
-
 
         firebasedb = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
         dbref = firebasedb.getReference("Users").child(mAuth.getCurrentUser().getUid());
@@ -80,6 +80,8 @@ public class Profile extends AppCompatActivity {
         });
 
         setContentView(R.layout.activity_profile);
+        bottomNavigationView = findViewById(R.id.bottomNav);
+        bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
     }
 
 
@@ -255,4 +257,33 @@ public class Profile extends AppCompatActivity {
         AlertDialog alert = alertDialog.create();
         alert.show();
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener bottomNavMethod = new
+            BottomNavigationView.OnNavigationItemSelectedListener(){
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch(item.getItemId()){
+                        case R.id.player:
+                            Intent i1 = new Intent(Profile.this, TrainingSession.class);
+                            startActivity(i1);
+                            break;
+                        case R.id.teams:
+                            Intent i2 = new Intent(Profile.this, Team.class);
+                            startActivity(i2);
+                            break;
+                        case R.id.teach:
+
+                            break;
+                        case R.id.agenda:
+                            Intent i4 = new Intent(Profile.this, Agenda.class);
+                            startActivity(i4);
+                            break;
+                        case R.id.profile:
+                            Intent i5 = new Intent(Profile.this, Profile.class);
+                            startActivity(i5);
+                            break;
+                    }
+                    return false;
+                }
+            };
 }
