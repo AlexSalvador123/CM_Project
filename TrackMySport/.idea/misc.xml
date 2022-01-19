@@ -3,7 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/activity_agenda.xml" value="0.33" />
+        <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/activity_agenda.xml" value="0.22" />
         <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/activity_main_page.xml" value="0.25" />
         <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/activity_profile.xml" value="0.36666666666666664" />
@@ -21,8 +21,9 @@
         <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/fragment_navbar.xml" value="0.36666666666666664" />
         <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/fragment_second.xml" value="0.36666666666666664" />
         <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/fragment_transparent.xml" value="0.36666666666666664" />
+        <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/item_event.xml" value="0.5" />
         <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/item_session.xml" value="0.36666666666666664" />
-        <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/item_team.xml" value="0.36666666666666664" />
+        <entry key="..\:/ALEX/Escola/Mestrado/CM/TrackMySport/CM_Project/TrackMySport/app/src/main/res/layout/item_team.xml" value="0.25" />
         <entry key="..\:/Universidade FCUL/Mestrado Informatica/Computacao Movel/Projeto_CM/CM_Project/TrackMySport/app/src/main/res/layout/activity_main_page.xml" value="0.36666666666666664" />
         <entry key="..\:/Universidade FCUL/Mestrado Informatica/Computacao Movel/Projeto_CM/CM_Project/TrackMySport/app/src/main/res/layout/activity_team.xml" value="0.36666666666666664" />
         <entry key="..\:/Universidade FCUL/Mestrado Informatica/Computacao Movel/Projeto_CM/CM_Project/TrackMySport/app/src/main/res/layout/activity_training_session.xml" value="0.36666666666666664" />

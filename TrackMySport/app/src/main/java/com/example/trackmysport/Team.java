@@ -137,7 +137,8 @@ public class Team extends AppCompatActivity {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
                                 dateText = popV.findViewById(R.id.showDatePicked);
-                                String date1 = month + "/" + dayOfMonth + "/" + year;
+                                int correctmonth = month+1;
+                                String date1 = correctmonth + "/" + dayOfMonth + "/" + year;
                                 date[0] = date1;
                                 dateText.setText(date[0]);
                             }
