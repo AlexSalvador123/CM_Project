@@ -11,6 +11,11 @@
         android:title="Teams"
         />
     <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic__"
+        android:title="Profile"
+        />
+    <item
         android:id="@+id/teach"
         android:icon="@drawable/s"
         android:title="Drawables"
@@ -20,10 +25,6 @@
         android:icon="@drawable/a"
         android:title="Schedule"
         />
-    <item
-        android:id="@+id/profile"
-        android:icon="@drawable/ic__"
-        android:title="Profile"
-        />
+
 
 </menu>

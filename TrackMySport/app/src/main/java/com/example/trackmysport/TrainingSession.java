@@ -77,7 +77,7 @@ public class TrainingSession extends AppCompatActivity {
                             startActivity(i4);
                             return true;
                         case R.id.profile:
-                            Intent i5 = new Intent(TrainingSession.this, Profile.class);
+                            Intent i5 = new Intent(TrainingSession.this, MainPage.class);
                             startActivity(i5);
                             return true;
 

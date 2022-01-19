@@ -42,7 +42,7 @@ public class DrawActivities extends AppCompatActivity {
                             startActivity(i4);
                             return true;
                         case R.id.profile:
-                            Intent i5 = new Intent(DrawActivities.this, Profile.class);
+                            Intent i5 = new Intent(DrawActivities.this, MainPage.class);
                             startActivity(i5);
                             return true;
                     }
