@@ -7,48 +7,72 @@
     tools:context=".DetailSessionFragment">
 
 
-
     <TextView
         android:id="@+id/title_session_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:layout_marginBottom="22dp"
-        android:ems="10"
+        android:layout_marginBottom="19dp"
         android:hint="Name"
-        app:layout_constraintBottom_toTopOf="@+id/title_session_difficulty"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/title_session_difficulty"
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp"
-        android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:hint="Difficulty"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/title_relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_session_name" />
+        app:layout_constraintTop_toBottomOf="@+id/title_session_name">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Difficulty: "
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/title_session_difficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:hint="Difficulty"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/title_relativeLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_session_name" />
+
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/title_relativeLayout"
         android:layout_width="368dp"
-        android:layout_height="442dp"
+        android:layout_height="320dp"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="253dp"
+        android:background="@drawable/background_border"
         android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_session_difficulty">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
 
         <TextView
@@ -60,7 +84,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="60dp"
             android:gravity="center"
-            android:text="Exercise" />
+            android:text="Exercise"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tempo_title"
@@ -71,7 +96,8 @@
             android:layout_toStartOf="@+id/reps_title"
             android:layout_toLeftOf="@+id/reps_title"
             android:gravity="center"
-            android:text="Time(min)" />
+            android:text="Time(min)"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/reps_title"
@@ -82,7 +108,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:gravity="center"
-            android:text="Repetitions" />
+            android:text="Repetitions"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/title_line1_1"
@@ -92,7 +119,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_marginTop="26dp"
-            />
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/title_line1_2"
@@ -101,7 +128,7 @@
             android:layout_alignBaseline="@+id/title_line1_1"
             android:layout_alignBottom="@+id/title_line1_1"
             android:layout_centerHorizontal="true"
-            />
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/title_line1_3"
@@ -110,7 +137,7 @@
             android:layout_alignEnd="@+id/reps_title"
             android:layout_alignRight="@+id/reps_title"
             android:layout_alignBottom="@+id/title_line1_2"
-            />
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/title_line2_1"
@@ -120,7 +147,7 @@
             android:layout_alignEnd="@+id/title_line1_1"
             android:layout_alignRight="@+id/title_line1_2"
             android:layout_marginTop="22dp"
-            />
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/title_line2_2"
@@ -130,7 +157,7 @@
             android:layout_alignStart="@+id/title_line1_2"
             android:layout_alignLeft="@+id/title_line1_2"
             android:layout_alignBottom="@+id/title_line2_1"
-            />
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/title_line2_3"
@@ -140,8 +167,7 @@
             android:layout_alignBottom="@+id/title_line2_2"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            />
-
+            android:gravity="center" />
 
 
     </RelativeLayout>
