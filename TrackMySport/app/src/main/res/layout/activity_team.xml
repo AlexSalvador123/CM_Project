@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#FFFDFD"
+    android:background="#FDFDFD"
     tools:context=".Team">
 
     <FrameLayout
@@ -24,20 +24,18 @@
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottomNav"
-        android:layout_alignParentBottom ="true"
+        android:layout_alignParentBottom="true"
         android:background="@color/white"
-        app:menu="@menu/nav"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:menu="@menu/nav">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
