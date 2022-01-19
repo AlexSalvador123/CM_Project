@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -19,6 +20,16 @@ public class DrawActivities extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNav);
         bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
         bottomNavigationView.setSelectedItemId(R.id.teach);
+    }
+
+    public void GoToVideos(View view){
+        Intent i = new Intent(DrawActivities.this, Videos.class);
+        startActivity(i);
+    }
+
+    public void GoToWhiteboard(View view){
+        Intent i = new Intent(DrawActivities.this, Whiteboard.class);
+        startActivity(i);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener bottomNavMethod = new
