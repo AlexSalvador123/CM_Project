@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.R.drawable;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -24,6 +25,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.lang.reflect.Field;
 
 public class Whiteboard extends AppCompatActivity {
@@ -31,6 +34,10 @@ public class Whiteboard extends AppCompatActivity {
     private int fragment = 0;
     private PaintCanvas paintCanvas;
     private String background = "white";
+    private FloatingActionButton undo;
+    private FloatingActionButton delete;
+    private FloatingActionButton save;
+    private FloatingActionButton openPreferences;
     Preferences preferences;
 
 
@@ -38,14 +45,22 @@ public class Whiteboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_whiteboard);
+        setTitle("Whiteboard");
         ConstraintLayout whiteboard = findViewById(R.id.whiteboard);
         paintCanvas = new PaintCanvas(Whiteboard.this, null);
         whiteboard.addView(paintCanvas);
         preferences = new Preferences();
+        undo = findViewById(R.id.undo);
+        delete = findViewById(R.id.delete);
+        openPreferences = findViewById(R.id.openPreferences);
     }
 
     public void openPreferences(View view){
         if(fragment == 0){
+            setTitle("Preferences");
+            undo.hide();
+            delete.hide();
+            openPreferences.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_back_20));
             FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction transaction = manager.beginTransaction();
             transaction.add(R.id.whiteboard, preferences);
@@ -54,6 +69,10 @@ public class Whiteboard extends AppCompatActivity {
             fragment = 1;
         }
         else{
+            undo.show();
+            delete.show();
+            openPreferences.setImageDrawable(getResources().getDrawable(R.drawable.baseline_settings_20));
+            setTitle("Whiteboard");
             getSupportFragmentManager().popBackStack();
             fragment = 0;
             ConstraintLayout whiteboard = findViewById(R.id.whiteboard);
