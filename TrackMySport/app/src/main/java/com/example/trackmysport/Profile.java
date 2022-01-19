@@ -82,6 +82,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         bottomNavigationView = findViewById(R.id.bottomNav);
         bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
+        bottomNavigationView.setSelectedItemId(R.id.profile);
     }
 
 
@@ -266,22 +267,20 @@ public class Profile extends AppCompatActivity {
                         case R.id.player:
                             Intent i1 = new Intent(Profile.this, TrainingSession.class);
                             startActivity(i1);
-                            break;
+                            return true;
                         case R.id.teams:
                             Intent i2 = new Intent(Profile.this, Team.class);
                             startActivity(i2);
-                            break;
+                            return true;
                         case R.id.teach:
 
-                            break;
+                            return true;
                         case R.id.agenda:
                             Intent i4 = new Intent(Profile.this, Agenda.class);
                             startActivity(i4);
-                            break;
+                            return true;
                         case R.id.profile:
-                            Intent i5 = new Intent(Profile.this, Profile.class);
-                            startActivity(i5);
-                            break;
+                            return true;
                     }
                     return false;
                 }

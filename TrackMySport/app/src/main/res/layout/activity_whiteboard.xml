@@ -16,7 +16,7 @@
         android:layout_marginBottom="8dp"
         android:clickable="true"
         android:onClick="openPreferences"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNav"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/baseline_settings_20" />
 
@@ -44,7 +44,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_menu_revert" />
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="414dp"
+        android:layout_height="62dp"
+        android:background="#E8F5E9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/nav" />
+
+    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
 <!--        android:id="@+id/save"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->

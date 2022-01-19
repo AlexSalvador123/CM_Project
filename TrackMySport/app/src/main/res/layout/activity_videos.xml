@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/video"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
@@ -19,6 +20,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2Videos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:onClick="openPreferencesVideo"
+        app:layout_constraintBottom_toTopOf="@+id/camera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_preferences" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="6dp"
+        android:clickable="true"
+        android:onClick="erase"
+        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton2Videos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="6dp"
+        android:clickable="true"
+        android:onClick="undo"
+        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_revert" />
+
     <Button
         android:id="@+id/openGallery"
         android:layout_width="wrap_content"
@@ -32,13 +69,12 @@
 
     <ImageView
         android:id="@+id/selectedImage"
-        android:layout_width="410dp"
-        android:layout_height="668dp"
-        app:layout_constraintBottom_toTopOf="@+id/openGallery"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@android:color/holo_red_dark" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <VideoView
@@ -51,14 +87,5 @@
        app:layout_constraintTop_toTopOf="parent" />
 
 
-   <androidx.fragment.app.FragmentContainerView
-       android:id="@+id/transparentFragment"
-       android:name="com.example.trackmysport.TransparentFragment"
-       android:layout_width="0dp"
-       android:layout_height="661dp"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintHorizontal_bias="0.428"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="@+id/selectedImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

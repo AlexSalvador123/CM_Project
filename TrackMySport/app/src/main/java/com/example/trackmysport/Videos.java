@@ -1,8 +1,11 @@
 package com.example.trackmysport;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
@@ -14,6 +17,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.hardware.Camera;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -33,6 +37,7 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 
 
+import com.example.trackmysport.databinding.FragmentColorsVideoBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -42,10 +47,14 @@ public class Videos extends AppCompatActivity {
     public static final int PICK_IMAGE = 17;
     private MediaController mMediaController;
     private int position = 1;
+    colorsVideo colorsVideo;
+    private int fragment = 0;
+    private static final String TAG = "TAG";
+    PaintCanvas paintCanvas;
+
 
     ImageView selectedImage;
     VideoView selectedVideo;
-    View transparentFragment;
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
 
     @Override
@@ -55,8 +64,13 @@ public class Videos extends AppCompatActivity {
         mMediaController = new MediaController(this);
         selectedImage = (ImageView) findViewById(R.id.selectedImage);
         selectedVideo = (VideoView) findViewById(R.id.selectedVideo);
-        transparentFragment = findViewById(R.id.transparentFragment);
         selectedVideo.setMediaController(mMediaController);
+        colorsVideo = new colorsVideo();
+        ConstraintLayout videos = findViewById(R.id.video);
+        paintCanvas = new PaintCanvas(Videos.this, null);
+        videos.addView(paintCanvas);
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.camera);
         fab.bringToFront();
@@ -100,7 +114,7 @@ public class Videos extends AppCompatActivity {
             if(uri.toString().contains("video")){
                 selectedVideo.bringToFront();
                 selectedVideo.setVideoURI(data.getData());
-                transparentFragment.bringToFront();
+                paintCanvas.bringToFront();
                 MediaController mediaController = new MediaController(this);
                 mediaController.setAnchorView(selectedVideo);
                 // Set video link (mp4 format )
@@ -111,9 +125,43 @@ public class Videos extends AppCompatActivity {
             else if(uri.toString().contains("image")){
                 selectedImage.bringToFront();
                 selectedImage.setImageURI(data.getData());
-                transparentFragment.bringToFront();
+                paintCanvas.bringToFront();
             }
         }
     }
+
+
+    public void openPreferencesVideo(View view){
+        if(fragment == 0){
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.add(R.id.video, colorsVideo);
+            transaction.addToBackStack(TAG);
+            transaction.commit();
+            fragment = 1;
+        }
+        else{
+            getSupportFragmentManager().popBackStack();
+            fragment = 0;
+            ConstraintLayout colorsVideo = findViewById(R.id.video);
+            colorsVideo.invalidate();
+        }
+
+    }
+
+    public void changeColor(View view){
+        String id = view.getResources().getResourceName(view.getId());
+        int color = Color.parseColor(id.replace("com.example.trackmysport:id/b","#"));
+        paintCanvas.changeStrokeColor(color);
+    }
+
+    public void undo(View view){
+        paintCanvas.undo();
+    }
+
+    public void erase(View view){
+        paintCanvas.erase();
+    }
+
 }
 
