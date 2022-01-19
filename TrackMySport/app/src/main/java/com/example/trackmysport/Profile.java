@@ -273,7 +273,8 @@ public class Profile extends AppCompatActivity {
                             startActivity(i2);
                             return true;
                         case R.id.teach:
-
+                            Intent i3 = new Intent(Profile.this, DrawActivities.class);
+                            startActivity(i3);
                             return true;
                         case R.id.agenda:
                             Intent i4 = new Intent(Profile.this, Agenda.class);

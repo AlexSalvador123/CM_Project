@@ -33,6 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Team extends AppCompatActivity {
 
@@ -89,7 +90,8 @@ public class Team extends AppCompatActivity {
 
                             return true;
                         case R.id.teach:
-
+                            Intent i3 = new Intent(Team.this, DrawActivities.class);
+                            startActivity(i3);
                             return true;
                         case R.id.agenda:
                             Intent i4 = new Intent(Team.this, Agenda.class);
@@ -141,11 +143,29 @@ public class Team extends AppCompatActivity {
         frag=true;
         fd = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
         dr = fd.getReference();
+        DatabaseReference dbref = fd.getReference("Users").child(mAuth.getCurrentUser().getUid());
+        String [] username = new String[1];
         EditText editText = (EditText) findViewById(R.id.nameTeam);
         String name = editText.getText().toString();
-        dr.child("Teams").child(name).child("teamname").setValue(name);
-        dr.child("Users").child(mAuth.getCurrentUser().getUid()).child("Teams").child(name).child("name").setValue(name);
-        dr.child("Teams").child(name).child("members").child(mAuth.getCurrentUser().getUid()).child("id").setValue(mAuth.getCurrentUser().getUid());
+        dbref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                System.out.println("-----");
+                HashMap s = (HashMap) snapshot.getValue();
+                System.out.println(s.get("name"));
+
+                username[0] = (String) s.get("name");
+                dr.child("Teams").child(name).child("teamname").setValue(name);
+                dr.child("Users").child(mAuth.getCurrentUser().getUid()).child("Teams").child(name).child("name").setValue(name);
+                dr.child("Teams").child(name).child("members").child(mAuth.getCurrentUser().getUid()).child("id").setValue(mAuth.getCurrentUser().getUid());
+                dr.child("Teams").child(name).child("members").child(mAuth.getCurrentUser().getUid()).child("name").setValue(username[0]);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         replaceFragment(new manageTeamsFragment());
     }
     public void eliminateTeam(View view){
@@ -154,6 +174,7 @@ public class Team extends AppCompatActivity {
         TextView editText = (TextView) findViewById(R.id.titleTeamName);
         String name = editText.getText().toString();
         dr.child("Teams").child(name).removeValue();
+        dr.child("Users").child(mAuth.getCurrentUser().getUid()).child("Teams").child(name).removeValue();
         replaceFragment(new manageTeamsFragment());
     }
 
