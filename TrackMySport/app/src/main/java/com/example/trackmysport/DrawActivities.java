@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -49,4 +50,15 @@ public class DrawActivities extends AppCompatActivity {
                     return false;
                 }
             };
+
+    public void WhiteBoardDraw(View view){
+        Intent i = new Intent(this, Whiteboard.class);
+        startActivity(i);
+    }
+
+    public void VideosDraw(View view){
+        Intent i = new Intent(this, Videos.class);
+        startActivity(i);
+    }
+
 }

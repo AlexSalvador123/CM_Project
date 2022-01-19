@@ -138,8 +138,7 @@ public class Whiteboard extends AppCompatActivity {
                             startActivity(i2);
                             return true;
                         case R.id.teach:
-                            Intent i3 = new Intent(Whiteboard.this, DrawActivities.class);
-                            startActivity(i3);
+
                             return true;
                         case R.id.agenda:
                             Intent i4 = new Intent(Whiteboard.this, Agenda.class);

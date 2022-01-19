@@ -281,6 +281,7 @@ public class Profile extends AppCompatActivity {
                             startActivity(i4);
                             return true;
                         case R.id.profile:
+
                             return true;
                     }
                     return false;
