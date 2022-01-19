@@ -60,4 +60,6 @@ public class TransparentFragment extends Fragment{
     }
 
 
+
+
 }

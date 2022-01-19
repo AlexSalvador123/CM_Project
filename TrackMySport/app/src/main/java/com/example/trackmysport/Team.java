@@ -10,6 +10,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.text.Editable;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,6 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Team extends AppCompatActivity {
 
@@ -40,7 +42,8 @@ public class Team extends AppCompatActivity {
     boolean frag= true;
     private static FirebaseDatabase fd;
     private static DatabaseReference dr;
-    TextView dateText;
+    TextView dateText ;
+    public static String teamName = "a";
     private FirebaseAuth mAuth;
     private BottomNavigationView bottomNavigationView;
     private FloatingActionButton floatingActionButton;
@@ -78,7 +81,6 @@ public class Team extends AppCompatActivity {
             BottomNavigationView.OnNavigationItemSelectedListener(){
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    System.out.println(item.getItemId());
                     switch(item.getItemId()){
                         case R.id.player:
                             Intent i1 = new Intent(Team.this, TrainingSession.class);
@@ -88,7 +90,8 @@ public class Team extends AppCompatActivity {
 
                             return true;
                         case R.id.teach:
-
+                            Intent i3 = new Intent(Team.this, DrawActivities.class);
+                            startActivity(i3);
                             return true;
                         case R.id.agenda:
                             Intent i4 = new Intent(Team.this, Agenda.class);
@@ -113,6 +116,18 @@ public class Team extends AppCompatActivity {
               frag=true;
           }
     }
+    public void onClickEvent(View view) {
+
+        replaceFragment(new Events());
+    }
+    public void onClickElements(View view) {
+
+        replaceFragment(new Elements());
+    }
+
+    public void BackTeam(View view) {
+        replaceFragment(new manageTeamsFragment());
+    }
 
     public void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -128,11 +143,29 @@ public class Team extends AppCompatActivity {
         frag=true;
         fd = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
         dr = fd.getReference();
+        DatabaseReference dbref = fd.getReference("Users").child(mAuth.getCurrentUser().getUid());
+        String [] username = new String[1];
         EditText editText = (EditText) findViewById(R.id.nameTeam);
         String name = editText.getText().toString();
-        dr.child("Teams").child(name).child("teamname").setValue(name);
-        dr.child("Users").child(mAuth.getCurrentUser().getUid()).child("Teams").child(name).child("name").setValue(name);
-        dr.child("Teams").child(name).child("members").child(mAuth.getCurrentUser().getUid()).child("id").setValue(mAuth.getCurrentUser().getUid());
+        dbref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                System.out.println("-----");
+                HashMap s = (HashMap) snapshot.getValue();
+                System.out.println(s.get("name"));
+
+                username[0] = (String) s.get("name");
+                dr.child("Teams").child(name).child("teamname").setValue(name);
+                dr.child("Users").child(mAuth.getCurrentUser().getUid()).child("Teams").child(name).child("name").setValue(name);
+                dr.child("Teams").child(name).child("members").child(mAuth.getCurrentUser().getUid()).child("id").setValue(mAuth.getCurrentUser().getUid());
+                dr.child("Teams").child(name).child("members").child(mAuth.getCurrentUser().getUid()).child("name").setValue(username[0]);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         replaceFragment(new manageTeamsFragment());
     }
     public void eliminateTeam(View view){
@@ -141,6 +174,7 @@ public class Team extends AppCompatActivity {
         TextView editText = (TextView) findViewById(R.id.titleTeamName);
         String name = editText.getText().toString();
         dr.child("Teams").child(name).removeValue();
+        dr.child("Users").child(mAuth.getCurrentUser().getUid()).child("Teams").child(name).removeValue();
         replaceFragment(new manageTeamsFragment());
     }
 
@@ -249,11 +283,11 @@ public class Team extends AppCompatActivity {
                                     if (email.equals(data.getEmail()) && !finish){
                                         databaseReference.child("Users").child(ds.getKey()).child("Teams").child(name).child("name").setValue(name);
                                         databaseReference.child("Teams").child(name).child("members").child(ds.getKey()).child("id").setValue(ds.getKey());
+                                        databaseReference.child("Teams").child(name).child("members").child(ds.getKey()).child("name").setValue(data.getName());
                                         finish = true;
                                     }
 
                                 }
-                                System.out.println(finish);
                                 if (!finish){
                                     System.out.println("ola bom dia");
                                         Toast.makeText(Team.this,"There's no users with this email address",Toast.LENGTH_SHORT).show();

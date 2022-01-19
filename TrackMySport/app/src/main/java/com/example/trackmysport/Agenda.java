@@ -174,7 +174,8 @@ public class Agenda extends AppCompatActivity{
                             startActivity(i2);
                             return true;
                         case R.id.teach:
-
+                            Intent i3 = new Intent(Agenda.this, DrawActivities.class);
+                            startActivity(i3);
                             return true;
                         case R.id.agenda:
                             return true;

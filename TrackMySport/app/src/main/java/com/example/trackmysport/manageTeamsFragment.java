@@ -95,7 +95,7 @@ public class manageTeamsFragment extends Fragment implements Adapter.ItemClickLi
     @Override
     public void onItemClick(TeamData dataTeam) {
         Fragment fragment = DetailTeamFragment.newInstance(dataTeam.getTeamname());
-
+        Team.teamName = dataTeam.getTeamname();
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 
         transaction.hide(getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container));

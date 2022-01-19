@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.trackmysport">
+    package="com.example.trackmysport" >
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -18,55 +18,94 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TrackMySport">
+        android:theme="@style/Theme.TrackMySport" >
+        <activity
+            android:name=".DrawActivities"
+            android:screenOrientation="portrait"
+            android:exported="true" />
         <activity
             android:name=".Agenda"
-            android:exported="true">
-        </activity>
+<<<<<<< HEAD
+            android:screenOrientation="portrait"
+            android:exported="true"></activity>
         <activity
             android:name=".Whiteboard"
+            android:screenOrientation="portrait"
             android:exported="true">
+=======
+            android:exported="true" />
+        <activity
+            android:name=".Whiteboard"
+            android:exported="true" >
+>>>>>>> 11d9946d1b0ad940daae70edc67e814925758122
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.trackmysport.MainPage" />
         </activity>
-
         <activity
             android:name=".TrainingSession"
-            android:exported="true"/>
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.trackmysport.MainPage" />
+<<<<<<< HEAD
+            android:screenOrientation="portrait"
+=======
+>>>>>>> 11d9946d1b0ad940daae70edc67e814925758122
+            android:exported="true" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.trackmysport.MainPage" />
+
         <activity
             android:name=".Videos"
+<<<<<<< HEAD
+            android:screenOrientation="portrait"
             android:exported="true">
+=======
+            android:exported="true" >
+>>>>>>> 11d9946d1b0ad940daae70edc67e814925758122
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.trackmysport.MainPage" />
         </activity>
         <activity
             android:name=".Team"
+<<<<<<< HEAD
+            android:screenOrientation="portrait"
             android:exported="true">
+=======
+            android:exported="true" >
+>>>>>>> 11d9946d1b0ad940daae70edc67e814925758122
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.trackmysport.MainPage" />
         </activity>
         <activity
             android:name=".Profile"
+<<<<<<< HEAD
+            android:screenOrientation="portrait"
             android:exported="true">
+=======
+            android:exported="true" >
+>>>>>>> 11d9946d1b0ad940daae70edc67e814925758122
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.trackmysport.MainPage" />
         </activity>
         <activity
             android:name=".Register"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".MainPage"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".SplashScreen"
+<<<<<<< HEAD
+            android:screenOrientation="portrait"
             android:exported="true">
+=======
+            android:exported="true" >
+>>>>>>> 11d9946d1b0ad940daae70edc67e814925758122
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -75,6 +114,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
     </application>
 

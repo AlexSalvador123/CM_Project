@@ -69,7 +69,8 @@ public class TrainingSession extends AppCompatActivity {
                             startActivity(i2);
                             return true;
                         case R.id.teach:
-
+                            Intent i3 = new Intent(TrainingSession.this, DrawActivities.class);
+                            startActivity(i3);
                             return true;
                         case R.id.agenda:
                             Intent i4 = new Intent(TrainingSession.this, Agenda.class);
