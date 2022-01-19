@@ -10,6 +10,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.text.Editable;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,7 +41,8 @@ public class Team extends AppCompatActivity {
     boolean frag= true;
     private static FirebaseDatabase fd;
     private static DatabaseReference dr;
-    TextView dateText;
+    TextView dateText ;
+    public static String teamName = "a";
     private FirebaseAuth mAuth;
     private BottomNavigationView bottomNavigationView;
     private FloatingActionButton floatingActionButton;
@@ -78,7 +80,6 @@ public class Team extends AppCompatActivity {
             BottomNavigationView.OnNavigationItemSelectedListener(){
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    System.out.println(item.getItemId());
                     switch(item.getItemId()){
                         case R.id.player:
                             Intent i1 = new Intent(Team.this, TrainingSession.class);
@@ -112,6 +113,18 @@ public class Team extends AppCompatActivity {
               replaceFragment(new manageTeamsFragment());
               frag=true;
           }
+    }
+    public void onClickEvent(View view) {
+
+        replaceFragment(new Events());
+    }
+    public void onClickElements(View view) {
+
+        replaceFragment(new Elements());
+    }
+
+    public void BackTeam(View view) {
+        replaceFragment(new manageTeamsFragment());
     }
 
     public void replaceFragment(Fragment fragment) {
@@ -249,11 +262,11 @@ public class Team extends AppCompatActivity {
                                     if (email.equals(data.getEmail()) && !finish){
                                         databaseReference.child("Users").child(ds.getKey()).child("Teams").child(name).child("name").setValue(name);
                                         databaseReference.child("Teams").child(name).child("members").child(ds.getKey()).child("id").setValue(ds.getKey());
+                                        databaseReference.child("Teams").child(name).child("members").child(ds.getKey()).child("name").setValue(data.getName());
                                         finish = true;
                                     }
 
                                 }
-                                System.out.println(finish);
                                 if (!finish){
                                     System.out.println("ola bom dia");
                                         Toast.makeText(Team.this,"There's no users with this email address",Toast.LENGTH_SHORT).show();
