@@ -1,5 +1,7 @@
 package com.example.trackmysport;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -60,4 +62,5 @@ public class DetailTeamFragment extends Fragment {
         return view;
 
     }
+
 }
