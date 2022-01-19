@@ -43,6 +43,7 @@ public class Team extends AppCompatActivity {
     TextView dateText;
     private FirebaseAuth mAuth;
     private BottomNavigationView bottomNavigationView;
+    private FloatingActionButton floatingActionButton;
 
 
     @Override
