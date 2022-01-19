@@ -43,16 +43,16 @@
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottomNav"
-        android:layout_alignParentBottom ="true"
-        android:background="@color/white"
-        app:menu="@menu/nav"
+        android:layout_alignParentBottom="true"
+        android:background="#E8F5E9"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:menu="@menu/nav">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

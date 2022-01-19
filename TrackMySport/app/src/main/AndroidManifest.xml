@@ -20,9 +20,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TrackMySport" >
         <activity
-            android:name=".GestureListener"
-            android:exported="false" />
-        <activity
             android:name=".Agenda"
             android:exported="true" />
         <activity

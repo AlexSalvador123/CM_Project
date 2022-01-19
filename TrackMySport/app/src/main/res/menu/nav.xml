@@ -3,27 +3,27 @@
     <item
         android:id="@+id/player"
         android:icon="@drawable/pl"
-        android:title="a"
+        android:title="Training"
         />
     <item
         android:id="@+id/teams"
         android:icon="@drawable/t"
-        android:title="b"
+        android:title="Teams"
         />
     <item
         android:id="@+id/teach"
         android:icon="@drawable/s"
-        android:title="c"
+        android:title="Drawables"
         />
     <item
         android:id="@+id/agenda"
         android:icon="@drawable/a"
-        android:title="d"
+        android:title="Schedule"
         />
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic__"
-        android:title="e"
+        android:title="Profile"
         />
 
 </menu>

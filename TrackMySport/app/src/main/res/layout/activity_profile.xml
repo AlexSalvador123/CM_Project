@@ -22,8 +22,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cardView"
-        android:layout_width="411dp"
-        android:layout_height="173dp"
+        android:layout_width="426dp"
+        android:layout_height="176dp"
         android:background="#43A047"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -184,8 +184,9 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
-        android:layout_width="407dp"
-        android:layout_height="70dp"
+        android:layout_width="420dp"
+        android:layout_height="66dp"
+        android:background="#E8F5E9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
