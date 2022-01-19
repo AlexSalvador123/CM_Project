@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -51,6 +53,8 @@ public class Profile extends AppCompatActivity {
         //get data from database
         String email = mAuth.getCurrentUser().getEmail().toString();
 
+
+
         firebasedb = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
         dbref = firebasedb.getReference("Users").child(mAuth.getCurrentUser().getUid());
         dbref.addValueEventListener(new ValueEventListener() {
@@ -77,6 +81,7 @@ public class Profile extends AppCompatActivity {
 
         setContentView(R.layout.activity_profile);
     }
+
 
     public void logout(View view){
         mAuth.signOut();

@@ -25,6 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -55,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     };
+    public void GoToMainAgenda (){
+        Intent i = new Intent(this, Agenda.class);
+        startActivity(i);
+        finish();
+    };
 
     public void GoToRegisterPage (View view){
         Intent i = new Intent(this, Register.class);
@@ -80,15 +87,21 @@ public class MainActivity extends AppCompatActivity {
     }
     public void updateUI(FirebaseUser account){
         if(account != null){
+            final boolean[] isCoach = {false};
             FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
             DatabaseReference databaseReference = mDatabase.getReference();
             databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    System.out.println(snapshot);
-                    for (DataSnapshot ds : snapshot.getChildren()) {
+                    //System.out.println(snapshot.getValue().getClass());
+                    HashMap e = (HashMap) snapshot.getValue();
 
+                    if (e.get("accountType").equals("Coach")){
+                        GoToMainPage();
+                    }else{
+                        GoToMainAgenda();
                     }
+
                 }
 
                 @Override
@@ -96,8 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-
-            startActivity(new Intent(this,MainPage.class));
 
         }else {
             toast = Toast.makeText(this,"Username or Password are incorrect",Toast.LENGTH_LONG);
