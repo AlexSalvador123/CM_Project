@@ -8,8 +8,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -20,7 +22,9 @@ import java.util.Calendar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,14 +41,20 @@ public class Team extends AppCompatActivity {
     private static FirebaseDatabase fd;
     private static DatabaseReference dr;
     TextView dateText;
+    private FirebaseAuth mAuth;
+    private BottomNavigationView bottomNavigationView;
+    private FloatingActionButton floatingActionButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_team);
-
+        setTitle("Teams");
+        bottomNavigationView = findViewById(R.id.bottomNav);
+        bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
+        bottomNavigationView.setSelectedItemId(R.id.teams);
 
         replaceFragment(new manageTeamsFragment());
         fragmentCreate = findViewById(R.id.floatingActionButton);
@@ -63,6 +73,37 @@ public class Team extends AppCompatActivity {
         );*/
 
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener bottomNavMethod = new
+            BottomNavigationView.OnNavigationItemSelectedListener(){
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    System.out.println(item.getItemId());
+                    switch(item.getItemId()){
+                        case R.id.player:
+                            Intent i1 = new Intent(Team.this, TrainingSession.class);
+                            startActivity(i1);
+                            return true;
+                        case R.id.teams:
+
+                            return true;
+                        case R.id.teach:
+
+                            return true;
+                        case R.id.agenda:
+                            Intent i4 = new Intent(Team.this, Agenda.class);
+                            startActivity(i4);
+                            return true;
+                        case R.id.profile:
+                            Intent i5 = new Intent(Team.this, Profile.class);
+                            startActivity(i5);
+                            return true;
+
+                    }
+                    return false;
+                }
+            };
+
     public void onClickFloating(View view) {
           if (frag==true) {
               replaceFragment(new CreateTeamFragment());
@@ -84,13 +125,14 @@ public class Team extends AppCompatActivity {
     }
 
     public void createTeam(View view){
-
         frag=true;
         fd = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
         dr = fd.getReference();
         EditText editText = (EditText) findViewById(R.id.nameTeam);
         String name = editText.getText().toString();
         dr.child("Teams").child(name).child("teamname").setValue(name);
+        dr.child("Users").child(mAuth.getCurrentUser().getUid()).child("Teams").child(name).child("name").setValue(name);
+        dr.child("Teams").child(name).child("members").child(mAuth.getCurrentUser().getUid()).child("id").setValue(mAuth.getCurrentUser().getUid());
         replaceFragment(new manageTeamsFragment());
     }
     public void eliminateTeam(View view){

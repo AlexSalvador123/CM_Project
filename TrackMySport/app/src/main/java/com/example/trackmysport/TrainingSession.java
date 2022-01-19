@@ -1,15 +1,19 @@
 package com.example.trackmysport;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -20,6 +24,7 @@ public class TrainingSession extends AppCompatActivity {
     public static int frag= 1;
     private static FirebaseDatabase firebasedb;
     private static DatabaseReference dbref;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +51,39 @@ public class TrainingSession extends AppCompatActivity {
             }
         );
 
+        bottomNavigationView = findViewById(R.id.bottomNav);
+        bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
+        bottomNavigationView.setSelectedItemId(R.id.player);
     }
 
+    private BottomNavigationView.OnNavigationItemSelectedListener bottomNavMethod = new
+            BottomNavigationView.OnNavigationItemSelectedListener(){
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    System.out.println(item.getItemId());
+                    switch(item.getItemId()){
+                        case R.id.player:
+                            return true;
+                        case R.id.teams:
+                            Intent i2 = new Intent(TrainingSession.this, Team.class);
+                            startActivity(i2);
+                            return true;
+                        case R.id.teach:
+
+                            return true;
+                        case R.id.agenda:
+                            Intent i4 = new Intent(TrainingSession.this, Agenda.class);
+                            startActivity(i4);
+                            return true;
+                        case R.id.profile:
+                            Intent i5 = new Intent(TrainingSession.this, Profile.class);
+                            startActivity(i5);
+                            return true;
+
+                    }
+                    return false;
+                }
+            };
 
 
     public void replace_sessions_fragment(Fragment fragment) {

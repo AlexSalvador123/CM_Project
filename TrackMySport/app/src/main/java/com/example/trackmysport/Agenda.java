@@ -1,6 +1,8 @@
 package com.example.trackmysport;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -9,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,6 +30,7 @@ public class Agenda extends AppCompatActivity{
     private FirebaseAuth mAuth;
     RecyclerView recyclerView1,recyclerView2,recyclerView3,recyclerView4;
     AdapterEvent adapter1,adapter2,adapter3,adapter4;
+    private BottomNavigationView bottomNavigationView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +65,9 @@ public class Agenda extends AppCompatActivity{
         adapter4 = new AdapterEvent(this, listOfEvents4);
         recyclerView4.setAdapter(adapter4);
 
+        bottomNavigationView = findViewById(R.id.bottomNav);
+        bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
+        bottomNavigationView.setSelectedItemId(R.id.agenda);
 
 
         databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Teams").addValueEventListener(new ValueEventListener() {
@@ -96,8 +103,8 @@ public class Agenda extends AppCompatActivity{
                                 Calendar nowPlus1 = Calendar.getInstance();
                                 nowPlus1.add(Calendar.DAY_OF_MONTH, 1);
                                 Calendar now = Calendar.getInstance();
-                                System.out.println("verifyDate->"+sdf.format(verifyDate.getTime()));
-                                System.out.println("nowPlus4->"+sdf.format(nowPlus1.getTime()));
+                                //System.out.println("verifyDate->"+sdf.format(verifyDate.getTime()));
+                                //System.out.println("nowPlus4->"+sdf.format(nowPlus1.getTime()));
                                 if (verifyDate.before(nowPlus1)) {
                                     ArrayList<String> EventList = new ArrayList<String>();
                                     EventList.add(sdf.format(verifyDate.getTime()));
@@ -127,10 +134,10 @@ public class Agenda extends AppCompatActivity{
                                     //System.out.println("------------->"+EventList.toString());
                                     listOfEvents4.add(EventList);
                                 }
-                                System.out.println("list1->"+listOfEvents1.toString());
+                                /*System.out.println("list1->"+listOfEvents1.toString());
                                 System.out.println("list2->"+listOfEvents2.toString());
                                 System.out.println("list3->"+listOfEvents3.toString());
-                                System.out.println("list4->"+listOfEvents4.toString());
+                                System.out.println("list4->"+listOfEvents4.toString());*/
                             }
                             adapter1.notifyDataSetChanged();
                             adapter2.notifyDataSetChanged();
@@ -152,4 +159,32 @@ public class Agenda extends AppCompatActivity{
             }
         });
     }
+    private BottomNavigationView.OnNavigationItemSelectedListener bottomNavMethod = new
+            BottomNavigationView.OnNavigationItemSelectedListener(){
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    System.out.println(item.getItemId());
+                    switch(item.getItemId()){
+                        case R.id.player:
+                            Intent i1 = new Intent(Agenda.this, TrainingSession.class);
+                            startActivity(i1);
+                            return true;
+                        case R.id.teams:
+                            Intent i2 = new Intent(Agenda.this, Team.class);
+                            startActivity(i2);
+                            return true;
+                        case R.id.teach:
+
+                            return true;
+                        case R.id.agenda:
+                            return true;
+                        case R.id.profile:
+                            Intent i5 = new Intent(Agenda.this, Profile.class);
+                            startActivity(i5);
+                            return true;
+
+                    }
+                    return false;
+                }
+            };
 }
