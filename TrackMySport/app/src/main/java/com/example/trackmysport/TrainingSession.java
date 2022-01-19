@@ -39,13 +39,16 @@ public class TrainingSession extends AppCompatActivity {
               public void onClick(View view) {
                   if (frag==1) {
                       replace_sessions_fragment(new CreateTrainingSessionFragment());
+                      fragmentCreate.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_back_20));
                       frag=0;
                   }else if (frag==0){
                       replace_sessions_fragment(new ManageTrainingSessionsFragment());
+                      fragmentCreate.setImageDrawable(getResources().getDrawable(R.drawable.plus_foreground));
                       frag=1;
                   }else{
                       replace_sessions_fragment(new ManageTrainingSessionsFragment());
                       frag=1;
+                      fragmentCreate.setImageDrawable(getResources().getDrawable(R.drawable.plus_foreground));
                   }
               }
             }
@@ -141,6 +144,7 @@ public class TrainingSession extends AppCompatActivity {
 
 
         replace_sessions_fragment(new ManageTrainingSessionsFragment());
+        fragmentCreate.setImageDrawable(getResources().getDrawable(R.drawable.plus_foreground));
     }
 
 
