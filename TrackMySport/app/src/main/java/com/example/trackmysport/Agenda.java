@@ -180,7 +180,7 @@ public class Agenda extends AppCompatActivity{
                         case R.id.agenda:
                             return true;
                         case R.id.profile:
-                            Intent i5 = new Intent(Agenda.this, Profile.class);
+                            Intent i5 = new Intent(Agenda.this, MainPage.class);
                             startActivity(i5);
                             return true;
 

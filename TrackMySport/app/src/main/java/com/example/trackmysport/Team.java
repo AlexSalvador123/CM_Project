@@ -98,7 +98,7 @@ public class Team extends AppCompatActivity {
                             startActivity(i4);
                             return true;
                         case R.id.profile:
-                            Intent i5 = new Intent(Team.this, Profile.class);
+                            Intent i5 = new Intent(Team.this, MainPage.class);
                             startActivity(i5);
                             return true;
 
