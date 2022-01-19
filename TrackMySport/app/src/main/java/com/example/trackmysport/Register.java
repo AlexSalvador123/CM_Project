@@ -48,41 +48,46 @@ public class Register extends AppCompatActivity {
     }
 
     public void createAccount(View view){
-        EditText emailAddress = (EditText)findViewById(R.id.editTextTextEmailAddress2);
-        EditText name = (EditText)findViewById(R.id.editTextTextPersonName);
-        EditText password1 = (EditText)findViewById(R.id.editTextTextPassword2);
-        EditText password2 = (EditText)findViewById(R.id.editTextTextPassword3);
-        EditText phoneNumber = (EditText)findViewById(R.id.editTextPhone);
-        RadioGroup radioGroup = (RadioGroup)findViewById(R.id.accountType);
-        final String accountType = ((RadioButton)findViewById(radioGroup.getCheckedRadioButtonId())).
-                                    getText().toString();
+        try{
+            EditText emailAddress = (EditText)findViewById(R.id.editTextTextEmailAddress2);
+            EditText name = (EditText)findViewById(R.id.editTextTextPersonName);
+            EditText password1 = (EditText)findViewById(R.id.editTextTextPassword2);
+            EditText password2 = (EditText)findViewById(R.id.editTextTextPassword3);
+            EditText phoneNumber = (EditText)findViewById(R.id.editTextPhone);
+            RadioGroup radioGroup = (RadioGroup)findViewById(R.id.accountType);
+            final String accountType = ((RadioButton)findViewById(radioGroup.getCheckedRadioButtonId())).
+                    getText().toString();
 
 
-        String email = emailAddress.getText().toString();
-        String password = password1.getText().toString();
-        String cPassword = password2.getText().toString();
-        if(validate(email, password,cPassword)) {
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                updateUI(user);
-                                firebasedb = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
-                                dbref = firebasedb.getReference();
-                                DatabaseReference userDB = dbref.child("Users").child(user.getUid());
-                                userDB.child("name").setValue(name.getText().toString());
-                                userDB.child("phoneNumber").setValue(phoneNumber.getText().toString());
-                                userDB.child("accountType").setValue(accountType);
-                                userDB.child("email").setValue(email);
+            String email = emailAddress.getText().toString();
+            String password = password1.getText().toString();
+            String cPassword = password2.getText().toString();
+            if(validate(email, password,cPassword)) {
+                mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    updateUI(user);
+                                    firebasedb = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
+                                    dbref = firebasedb.getReference();
+                                    DatabaseReference userDB = dbref.child("Users").child(user.getUid());
+                                    userDB.child("name").setValue(name.getText().toString());
+                                    userDB.child("phoneNumber").setValue(phoneNumber.getText().toString());
+                                    userDB.child("accountType").setValue(accountType);
+                                    userDB.child("email").setValue(email);
 
-                            } else {
-                                updateUI(null);
+                                } else {
+                                    updateUI(null);
+                                }
                             }
-                        }
-                    });
+                        });
+            }
         }
+       catch (Exception e){
+           //
+       }
     }
 
     public void updateUI(FirebaseUser account){
@@ -108,5 +113,11 @@ public class Register extends AppCompatActivity {
             temp=false;
         }
         return temp;
+    }
+
+    public void login(View view){
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+
     }
 }

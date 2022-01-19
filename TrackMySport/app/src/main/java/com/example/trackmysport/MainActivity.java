@@ -72,18 +72,24 @@ public class MainActivity extends AppCompatActivity {
     public void login(View view){
         EditText email = (EditText) findViewById(R.id.editTextTextEmailAddress);
         EditText password = (EditText) findViewById(R.id.editTextTextPassword);
-        mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            updateUI(null);
+        try {
+            mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                updateUI(user);
+                            } else {
+                                updateUI(null);
+                            }
                         }
-                    }
-                });
+                    });
+        }
+        catch (Exception e){
+
+        }
+
     }
     public void updateUI(FirebaseUser account){
         if(account != null){
