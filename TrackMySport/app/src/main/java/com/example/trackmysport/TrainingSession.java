@@ -53,6 +53,7 @@ public class TrainingSession extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomNav);
         bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
+        bottomNavigationView.setSelectedItemId(R.id.player);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener bottomNavMethod = new
@@ -62,24 +63,22 @@ public class TrainingSession extends AppCompatActivity {
                     System.out.println(item.getItemId());
                     switch(item.getItemId()){
                         case R.id.player:
-                            Intent i1 = new Intent(TrainingSession.this, TrainingSession.class);
-                            startActivity(i1);
-                            break;
+                            return true;
                         case R.id.teams:
                             Intent i2 = new Intent(TrainingSession.this, Team.class);
                             startActivity(i2);
-                            break;
+                            return true;
                         case R.id.teach:
 
-                            break;
+                            return true;
                         case R.id.agenda:
                             Intent i4 = new Intent(TrainingSession.this, Agenda.class);
                             startActivity(i4);
-                            break;
+                            return true;
                         case R.id.profile:
                             Intent i5 = new Intent(TrainingSession.this, Profile.class);
                             startActivity(i5);
-                            break;
+                            return true;
 
                     }
                     return false;
