@@ -32,22 +32,23 @@ public class MainPage extends AppCompatActivity {
                         case R.id.player:
                             Intent i1 = new Intent(MainPage.this, TrainingSession.class);
                             startActivity(i1);
-                            break;
+                            return true;
                         case R.id.teams:
                             Intent i2 = new Intent(MainPage.this, Team.class);
                             startActivity(i2);
-                            break;
+                            return true;
                         case R.id.teach:
-
-                            break;
+                            Intent i3 = new Intent(MainPage.this, DrawActivities.class);
+                            startActivity(i3);
+                            return true;
                         case R.id.agenda:
                             Intent i4 = new Intent(MainPage.this, Agenda.class);
                             startActivity(i4);
-                            break;
+                            return true;
                         case R.id.profile:
                             Intent i5 = new Intent(MainPage.this, Profile.class);
                             startActivity(i5);
-                            break;
+                            return true;
 
                     }
                 return false;

@@ -10,11 +10,15 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DrawActivities extends AppCompatActivity {
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw_activities);
+        bottomNavigationView = findViewById(R.id.bottomNav);
+        bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
+        bottomNavigationView.setSelectedItemId(R.id.teach);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener bottomNavMethod = new
@@ -38,7 +42,7 @@ public class DrawActivities extends AppCompatActivity {
                             startActivity(i4);
                             return true;
                         case R.id.profile:
-                            Intent i5 = new Intent(Team.this, Profile.class);
+                            Intent i5 = new Intent(DrawActivities.this, Profile.class);
                             startActivity(i5);
                             return true;
                     }

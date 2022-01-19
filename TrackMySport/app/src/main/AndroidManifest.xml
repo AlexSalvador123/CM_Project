@@ -21,12 +21,15 @@
         android:theme="@style/Theme.TrackMySport">
         <activity
             android:name=".DrawActivities"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Agenda"
+            android:screenOrientation="portrait"
             android:exported="true"></activity>
         <activity
             android:name=".Whiteboard"
+            android:screenOrientation="portrait"
             android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -34,6 +37,7 @@
         </activity>
         <activity
             android:name=".TrainingSession"
+            android:screenOrientation="portrait"
             android:exported="true" />
 
         <meta-data
@@ -42,6 +46,7 @@
 
         <activity
             android:name=".Videos"
+            android:screenOrientation="portrait"
             android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -49,6 +54,7 @@
         </activity>
         <activity
             android:name=".Team"
+            android:screenOrientation="portrait"
             android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -56,6 +62,7 @@
         </activity>
         <activity
             android:name=".Profile"
+            android:screenOrientation="portrait"
             android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -63,12 +70,15 @@
         </activity>
         <activity
             android:name=".Register"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".MainPage"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".SplashScreen"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -78,6 +88,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
     </application>
 
