@@ -34,10 +34,11 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 
-import com.example.trackmysport.databinding.FragmentColorsVideoBinding;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -45,7 +46,6 @@ import java.util.ArrayList;
 public class Videos extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     public static final int PICK_IMAGE = 17;
-    private MediaController mMediaController;
     private int position = 1;
     colorsVideo colorsVideo;
     private int fragment = 0;
@@ -56,7 +56,9 @@ public class Videos extends AppCompatActivity {
     private FloatingActionButton undoPaintingVideo;
     private FloatingActionButton deletePaintingVideo;
     private FloatingActionButton preferencesVideo;
+    private FloatingActionButton videoController;
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,8 @@ public class Videos extends AppCompatActivity {
         undoPaintingVideo = findViewById(R.id.undoPaintingVideo);
         deletePaintingVideo = findViewById(R.id.deletePaintingVideo);
         preferencesVideo = findViewById(R.id.preferencesVideo);
+        videoController = findViewById(R.id.videoController);
+        videoController.hide();
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.camera);
@@ -113,17 +117,29 @@ public class Videos extends AppCompatActivity {
             String d = data.getData().toString();
             Uri uri = data.getData();
             if(uri.toString().contains("video")){
+
                 selectedVideo.bringToFront();
                 selectedVideo.setVideoURI(data.getData());
                 paintCanvas.bringToFront();
                 // Set video link (mp4 format )
                 selectedVideo.setVideoURI(uri);
                 selectedVideo.start();
+                videoController.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_pause_24));
+                videoController.show();
+                selectedVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        Toast.makeText(getApplicationContext(), "Video completed", Toast.LENGTH_LONG).show();
+                        videoController.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_play_arrow_24));
+                    }
+                });
             }
             else if(uri.toString().contains("image")){
+                videoController.hide();
                 selectedImage.bringToFront();
                 selectedImage.setImageURI(data.getData());
                 paintCanvas.bringToFront();
+
             }
         }
     }
@@ -161,10 +177,23 @@ public class Videos extends AppCompatActivity {
 
     public void undo(View view){
         paintCanvas.undo();
+
     }
 
     public void erase(View view){
         paintCanvas.erase();
+
+    }
+
+    public void resumePauseVideo(View view){
+        if(selectedVideo.isPlaying()) {
+            videoController.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_play_arrow_24));
+            selectedVideo.pause();
+        }else{
+            videoController.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_pause_24));
+            selectedVideo.start();
+
+        }
     }
 
 }
