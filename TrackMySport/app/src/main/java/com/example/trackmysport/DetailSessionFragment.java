@@ -1,9 +1,17 @@
 package com.example.trackmysport;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -11,7 +19,19 @@ import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class DetailSessionFragment extends Fragment {
@@ -26,6 +46,7 @@ public class DetailSessionFragment extends Fragment {
     private static final String ARG_PARAM6 = "param6";
     private static final String ARG_PARAM7 = "param7";
     private static final String ARG_PARAM8 = "param8";
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -111,7 +132,8 @@ public class DetailSessionFragment extends Fragment {
         TextView ex2_reps_session = view.findViewById(R.id.title_line2_3);
         ex2_reps_session.setText(mParam8);
 
-
         return view;
     }
+
 }
+
