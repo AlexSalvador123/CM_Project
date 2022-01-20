@@ -245,7 +245,6 @@ public class Team extends AppCompatActivity {
                         String name = Team.teamName;
                         dr.child("Teams").child(name).child("events").child(key).child("date").setValue(date[0]);
                         dr.child("Teams").child(name).child("events").child(key).child("title").setValue(title);
-
                         dr.child("Teams").child(name).child("events").child(key).child("address").setValue(address);
 
                     }

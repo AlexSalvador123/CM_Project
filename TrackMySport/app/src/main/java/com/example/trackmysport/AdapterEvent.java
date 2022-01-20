@@ -33,10 +33,13 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull AdapterEvent.MyViewHolder holder, int position) {
+        try{
+            ArrayList<String> data = list.get(position);
+            holder.title.setText(data.get(1));
+            holder.date.setText(data.get(0));
+        }catch (Exception e){
 
-        ArrayList<String> data = list.get(position);
-        holder.title.setText(data.get(1));
-        holder.date.setText(data.get(0));
+        }
     }
 
     @Override
