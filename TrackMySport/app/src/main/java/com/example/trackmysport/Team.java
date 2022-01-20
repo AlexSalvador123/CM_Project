@@ -242,8 +242,9 @@ public class Team extends AppCompatActivity {
                         fd = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
                         dr = fd.getReference();
                         String key = dr.push().getKey();
-                        TextView editText = (TextView) findViewById(R.id.titleTeamName);
-                        String name = editText.getText().toString();
+                        //TextView editText = (TextView) findViewById(R.id.titleTeamName);
+                        //String name = editText.getText().toString();
+                        String name = Team.teamName;
                         dr.child("Teams").child(name).child("events").child(key).child("date").setValue(date[0]);
                         dr.child("Teams").child(name).child("events").child(key).child("title").setValue(title);
                         dr.child("Teams").child(name).child("events").child(key).child("address").setValue(address);
@@ -271,8 +272,9 @@ public class Team extends AppCompatActivity {
 
                         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://trackmysport-ff56d-default-rtdb.europe-west1.firebasedatabase.app/");
                         DatabaseReference databaseReference = mDatabase.getReference();
-                        TextView editText = (TextView) findViewById(R.id.titleTeamName);
-                        String name = editText.getText().toString();
+                        //TextView editText = (TextView) findViewById(R.id.titleTeamName);
+                        //String name = editText.getText().toString();
+                        String name = Team.teamName;
                         databaseReference.child("Users").addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
