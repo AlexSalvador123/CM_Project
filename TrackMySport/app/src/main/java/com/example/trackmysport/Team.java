@@ -231,11 +231,9 @@ public class Team extends AppCompatActivity {
                 .setPositiveButton("done", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                         EditText edit1 = (EditText) popV.findViewById(R.id.editText);
                         Editable editable1 = edit1.getText();
                         String title = editable1.toString();
-
                         EditText edit2 = (EditText) popV.findViewById(R.id.editTextPostalAddress);
                         Editable editable2 = edit2.getText();
                         String address = editable2.toString();
@@ -247,6 +245,7 @@ public class Team extends AppCompatActivity {
                         String name = Team.teamName;
                         dr.child("Teams").child(name).child("events").child(key).child("date").setValue(date[0]);
                         dr.child("Teams").child(name).child("events").child(key).child("title").setValue(title);
+
                         dr.child("Teams").child(name).child("events").child(key).child("address").setValue(address);
 
                     }
@@ -281,14 +280,12 @@ public class Team extends AppCompatActivity {
                                 Boolean finish = false;
                                 for (DataSnapshot ds : snapshot.getChildren()) {
                                     UserData data = ds.getValue(UserData.class);
-
                                     if (email.equals(data.getEmail()) && !finish){
-                                        databaseReference.child("Users").child(ds.getKey()).child("Teams").child(name).child("name").setValue(name);
-                                        databaseReference.child("Teams").child(name).child("members").child(ds.getKey()).child("id").setValue(ds.getKey());
                                         databaseReference.child("Teams").child(name).child("members").child(ds.getKey()).child("name").setValue(data.getName());
+                                        databaseReference.child("Teams").child(name).child("members").child(ds.getKey()).child("id").setValue(ds.getKey());
+                                        databaseReference.child("Users").child(ds.getKey()).child("Teams").child(name).child("name").setValue(name);
                                         finish = true;
                                     }
-
                                 }
                                 if (!finish){
                                     System.out.println("ola bom dia");

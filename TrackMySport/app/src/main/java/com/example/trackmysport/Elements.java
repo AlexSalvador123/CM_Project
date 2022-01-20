@@ -45,9 +45,10 @@ public class Elements extends Fragment {
         database.child("Teams").child(editText).child("members").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds : snapshot.getChildren()) {
-                    HashMap s = (HashMap) ds.getValue();
 
+                for (DataSnapshot ds : snapshot.getChildren()) {
+
+                    HashMap s = (HashMap) ds.getValue();
                     ArrayList<String> data = new ArrayList<>();
                     data.add(s.get("name").toString());
                     list.add(data);

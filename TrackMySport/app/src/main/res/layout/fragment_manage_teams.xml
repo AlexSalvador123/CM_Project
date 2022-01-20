@@ -7,6 +7,7 @@
     tools:context=".manageTeamsFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:id="@+id/createTeam_title"
         android:layout_width="wrap_content"
@@ -23,11 +24,11 @@
         android:id="@+id/teamList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/createTeam_title"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="66dp"
 
-        />
+        android:layout_marginStart="-4dp"
+        android:layout_marginTop="10dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"

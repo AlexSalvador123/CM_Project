@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 public class Events extends Fragment {
     String editText = Team.teamName;
@@ -47,10 +49,13 @@ public class Events extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     HashMap s = (HashMap) ds.getValue();
-
+                    System.out.println(ds);
                     ArrayList<String> data = new ArrayList<>();
-                    data.add(s.get("date").toString());
-                    data.add(s.get("title").toString());
+                    try {
+                        data.add(s.get("date").toString());
+                        data.add(s.get("title").toString());
+                    } catch (Exception e) {
+                    }
                     list.add(data);
                 }
                 adapter.notifyDataSetChanged();
